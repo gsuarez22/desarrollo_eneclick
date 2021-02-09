@@ -1,0 +1,29 @@
+Flotas (id_flo, tipo, matricula, nro_movil)
+Tipo = AMBULANCIA, AUTO
+
+
+Incidentes (id_inc, tipo, fecha_inicio, fecha_fin, problema, solucion, id_usu, id_flo)
+Tipo = INCREMENTAL ASIGNADO POR EL USUARIO
+
+
+
+Usuarios  (id_usu, rol, nombre, apellido, CI, nick, pass, cel)
+Rol = CHOFER, TALLERISTA, OPERATIVO
+
+Repuestos (id_rep, codigo, nombre, stock)
+
+
+
+Repuestos_Ingresos (id, id_rep, cantidad, fecha_ingreso, id_usu)
+
+
+
+Repuestos_Egresos (id, id_rep, cantidad, fecha_egreso, id_inc, id_usu)
+
+
+
+Incidentes_Documentos (id, id_inc, ruta_archivo, fecha_ingreso, id_usu)
+
+
+
+
