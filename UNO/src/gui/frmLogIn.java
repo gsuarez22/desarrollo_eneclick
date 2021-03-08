@@ -1,9 +1,11 @@
 
 package gui;
 
+import dominio.controlador;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,6 +14,9 @@ import java.awt.Toolkit;
 
 public class frmLogIn extends javax.swing.JFrame {
 
+    //ATRIBUTOS DE CLASE
+    public controlador miControlador = new controlador();
+    
     public frmLogIn() {
         initComponents();
     }
@@ -22,7 +27,7 @@ public class frmLogIn extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnIngresar = new javax.swing.JButton();
         txtUsuario = new javax.swing.JTextField();
         txtClave = new javax.swing.JPasswordField();
 
@@ -37,9 +42,14 @@ public class frmLogIn extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(40, 70, 60, 20);
 
-        jButton1.setText("Ingresar");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(160, 110, 110, 23);
+        btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnIngresar);
+        btnIngresar.setBounds(160, 110, 110, 23);
         getContentPane().add(txtUsuario);
         txtUsuario.setBounds(100, 30, 250, 20);
         getContentPane().add(txtClave);
@@ -47,6 +57,21 @@ public class frmLogIn extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        // TODO add your handling code here:
+
+        if(miControlador.conectarUsuario ( txtUsuario.getText(), txtClave.getText()) )
+        {
+            frmMenu frm = new frmMenu();
+            frm.abrir(miControlador);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Credenciales incorrectas. Vuelva a intentarlo.");
+        }  
+        
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
    
     public void abrir()
@@ -59,7 +84,7 @@ public class frmLogIn extends javax.swing.JFrame {
     }    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnIngresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField txtClave;
