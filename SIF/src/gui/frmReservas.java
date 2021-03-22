@@ -7,6 +7,7 @@ import domain.Reserva;
 import domain.usuarios;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
@@ -83,6 +84,15 @@ public class frmReservas extends javax.swing.JFrame {
         cmbReserva = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        lblbook = new javax.swing.JLabel();
+        txtBooking = new javax.swing.JTextField();
+        Labells = new javax.swing.JLabel();
+        dtpCRD = new com.toedter.calendar.JDateChooser();
+        jLabel2 = new javax.swing.JLabel();
+        txtIncoterm = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtConsignee = new javax.swing.JTextField();
+        chkCourrier = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -109,12 +119,12 @@ public class frmReservas extends javax.swing.JFrame {
 
         txtDrive.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtDrive);
-        txtDrive.setBounds(110, 180, 610, 20);
+        txtDrive.setBounds(10, 180, 710, 20);
 
         labeler3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labeler3.setText("CLIENTE");
         getContentPane().add(labeler3);
-        labeler3.setBounds(250, 10, 650, 20);
+        labeler3.setBounds(380, 10, 290, 20);
 
         cmbCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         cmbCliente.addItemListener(new java.awt.event.ItemListener() {
@@ -123,7 +133,7 @@ public class frmReservas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbCliente);
-        cmbCliente.setBounds(250, 30, 650, 20);
+        cmbCliente.setBounds(380, 30, 290, 20);
 
         txtContrato.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtContrato);
@@ -244,7 +254,7 @@ public class frmReservas extends javax.swing.JFrame {
         labeler12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labeler12.setText("PROVEEDOR");
         getContentPane().add(labeler12);
-        labeler12.setBounds(440, 110, 320, 20);
+        labeler12.setBounds(320, 110, 260, 20);
 
         cmbProveedor.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -252,7 +262,7 @@ public class frmReservas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbProveedor);
-        cmbProveedor.setBounds(440, 130, 320, 20);
+        cmbProveedor.setBounds(320, 130, 260, 20);
 
         lblMedio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblMedio);
@@ -294,7 +304,7 @@ public class frmReservas extends javax.swing.JFrame {
         labeler17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labeler17.setText("VINCULO CON EL DRIVE");
         getContentPane().add(labeler17);
-        labeler17.setBounds(80, 160, 740, 20);
+        labeler17.setBounds(10, 160, 750, 20);
 
         cmbHOUSETIPO.setEditable(true);
         getContentPane().add(cmbHOUSETIPO);
@@ -310,6 +320,11 @@ public class frmReservas extends javax.swing.JFrame {
         txtMASTERBL.setBounds(1050, 180, 130, 20);
 
         cmbEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PENDIENTE", "CERRADO", "CANCELADO" }));
+        cmbEstado.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbEstadoItemStateChanged(evt);
+            }
+        });
         getContentPane().add(cmbEstado);
         cmbEstado.setBounds(1190, 30, 130, 20);
 
@@ -358,12 +373,12 @@ public class frmReservas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbAgente);
-        cmbAgente.setBounds(110, 130, 320, 20);
+        cmbAgente.setBounds(10, 130, 290, 20);
 
         labeler23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labeler23.setText("AGENTE");
         getContentPane().add(labeler23);
-        labeler23.setBounds(110, 110, 320, 14);
+        labeler23.setBounds(10, 110, 290, 14);
 
         labeler24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labeler24.setText("NUMERO SIF");
@@ -452,6 +467,37 @@ public class frmReservas extends javax.swing.JFrame {
         getContentPane().add(jButton2);
         jButton2.setBounds(773, 220, 130, 20);
 
+        lblbook.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(lblbook);
+        lblbook.setBounds(250, 10, 120, 20);
+        getContentPane().add(txtBooking);
+        txtBooking.setBounds(250, 30, 120, 20);
+
+        Labells.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Labells.setText("INCOTERM");
+        getContentPane().add(Labells);
+        Labells.setBounds(800, 10, 100, 14);
+        getContentPane().add(dtpCRD);
+        dtpCRD.setBounds(680, 30, 110, 20);
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("CRD");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(680, 10, 110, 14);
+        getContentPane().add(txtIncoterm);
+        txtIncoterm.setBounds(800, 30, 100, 20);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("CONSIGNEE");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(590, 110, 170, 20);
+        getContentPane().add(txtConsignee);
+        txtConsignee.setBounds(589, 130, 170, 20);
+
+        chkCourrier.setText("COURRIER");
+        getContentPane().add(chkCourrier);
+        chkCourrier.setBounds(10, 70, 90, 30);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -462,8 +508,8 @@ public class frmReservas extends javax.swing.JFrame {
     
     private void cargarTabla()
     {
-       // unC.cargarTabla("select * from sif_reservas where tipo_embarque = '" + cmbEmbarque.getSelectedItem().toString() + "' and tipo_reserva = '" + cmbReserva.getSelectedItem().toString() + "' and fechaentrada > '2021-01-01 00:00:00'  order by -fechaentrada", tblLista);
-        unC.cargarTabla("select * from sif_reservas where tipo_embarque = '" + cmbEmbarque.getSelectedItem().toString() + "' and fechaentrada > '2021-01-01 00:00:00'  order by -fechaentrada", tblLista);
+       unC.cargarTabla("select * from sif_reservas where tipo_embarque = '" + cmbEmbarque.getSelectedItem().toString() + "' and tipo_reserva = '" + cmbReserva.getSelectedItem().toString() + "' and estado = '" + cmbEstado.getSelectedItem().toString() + "' AND fechaentrada > '2021-01-01 00:00:00'  order by -fechaentrada", tblLista);
+       // unC.cargarTabla("select * from sif_reservas where tipo_embarque = '" + cmbEmbarque.getSelectedItem().toString() + "' and fechaentrada > '2021-01-01 00:00:00'  order by -fechaentrada", tblLista);
     }
     
     private void cmbClienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClienteItemStateChanged
@@ -493,8 +539,14 @@ public class frmReservas extends javax.swing.JFrame {
         cmbTransporte_Entidad1.setSelectedItem(r.transporte_entidad);
         cmbMedio.setSelectedItem(r.transporte_nombre);
         txtViaje.setText(r.transporte_viaje);
-        try{dtpETA.setDate(unS.parse(r.eta));}catch(Exception ex){}
-        try{dtpETD.setDate(unS.parse(r.etd));}catch(Exception ex){}
+        if (r.eta.equals("1900-01-01 00:00:00.0")){dtpETA.setDate(null);} 
+        else {
+            try{dtpETA.setDate(unS.parse(r.eta));}catch(Exception ex){}
+        }
+        if (r.etd.equals("1900-01-01 00:00:00.0")){dtpETD.setDate(null);} 
+        else {
+            try{dtpETD.setDate(unS.parse(r.etd));}catch(Exception ex){}
+        }
         cmbAgente.setSelectedItem(r.agente_entidad);
         cmbProveedor.setSelectedItem(r.proveedor_entidad);
         cmbOrigen.setSelectedItem(r.origen);
@@ -506,6 +558,17 @@ public class frmReservas extends javax.swing.JFrame {
         cmbHOUSETIPO.setSelectedItem(r.house_tipo);
         txtMASTERBL.setText(r.master_bl);
         cmbMASTERTIPO.setSelectedItem(r.master_tipo);
+        txtBooking.setText(r.booking);
+        
+        SimpleDateFormat UND = new SimpleDateFormat("yyyy-MM-dd");
+        if (r.crd.equals("1900-01-01")){dtpCRD.setDate(null);} 
+        else {
+            try{dtpCRD.setDate(UND.parse(r.crd));}catch(Exception ex){dtpCRD.setDate(null);}
+        }
+        txtIncoterm.setText(r.incoterm);
+        txtConsignee.setText(r.consignee);
+        if(r.courrier.equals("0")){chkCourrier.setSelected(false);} else{chkCourrier.setSelected(true);};
+        
     }
     
     private void tblListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListaMouseClicked
@@ -555,28 +618,37 @@ public class frmReservas extends javax.swing.JFrame {
             unC.cargarCombo("SELECT DISTINCT (transporte_entidad) AS val FROM sif_reservas WHERE  fechaentrada > '2021-01-01 00:00:00' and tipo_embarque = '" + cmbEmbarque.getSelectedItem().toString() + "' order by val", cmbTransporte_Entidad1);
             unC.cargarCombo("SELECT DISTINCT (transporte_nombre) AS val FROM sif_reservas WHERE  fechaentrada > '2021-01-01 00:00:00' and tipo_embarque = '" + cmbEmbarque.getSelectedItem().toString() + "' order by val", cmbMedio);
             cargarTabla();
+            chkCourrier.setVisible(false);
             if(cmbEmbarque.getSelectedItem().toString().equals("MARITIMO"))
             {
                 lblMedio.setText("BUQUE");
                 lblVia.setText("VIAJE");
+                lblbook.setText("BOOKING");
+                txtBooking.setEnabled(true);
             }
             
             if(cmbEmbarque.getSelectedItem().toString().equals("AEREO"))
             {
                 lblMedio.setText("");
                 lblVia.setText("VUELO");
+                txtBooking.setEnabled(false);
+                lblbook.setText("");
+                chkCourrier.setVisible(true);
             }
             
             if(cmbEmbarque.getSelectedItem().toString().equals("TERRESTRE"))
             {
                 lblMedio.setText("MIC");
                 lblVia.setText("CRT");
+                txtBooking.setEnabled(false);
+                lblbook.setText("");
             }
         }
     }//GEN-LAST:event_cmbEmbarqueItemStateChanged
 
     private void cmbReservaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbReservaItemStateChanged
         // TODO add your handling code here:
+        cargarTabla();
     }//GEN-LAST:event_cmbReservaItemStateChanged
 
     private void cmdContenedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdContenedorActionPerformed
@@ -642,8 +714,8 @@ public class frmReservas extends javax.swing.JFrame {
             r.transporte_entidad = cmbTransporte_Entidad1.getSelectedItem().toString();
             r.transporte_nombre = cmbMedio.getSelectedItem().toString();
             r.transporte_viaje = txtViaje.getText();
-            r.eta = unS.format(dtpETA.getDate());
-            r.etd = unS.format(dtpETD.getDate());
+            try{r.eta = unS.format(dtpETA.getDate());}catch(Exception ex){r.eta = "1900-01-01";}
+            try{r.etd = unS.format(dtpETD.getDate());}catch(Exception ex){r.etd = "1900-01-01";}
             r.agente_entidad = cmbAgente.getSelectedItem().toString();
             r.proveedor_entidad = cmbProveedor.getSelectedItem().toString();
             r.origen = cmbOrigen.getSelectedItem().toString();
@@ -655,6 +727,15 @@ public class frmReservas extends javax.swing.JFrame {
             r.house_tipo = cmbHOUSETIPO.getSelectedItem().toString();
             r.master_bl = txtMASTERBL.getText();
             r.master_tipo = cmbMASTERTIPO.getSelectedItem().toString();
+            r.booking = txtBooking.getText();
+            
+            SimpleDateFormat UND = new SimpleDateFormat("yyyy-MM-dd");
+            try{r.crd = UND.format(dtpCRD.getDate());}catch(Exception ex){r.crd = "1900-01-01";}
+            r.incoterm = txtIncoterm.getText();
+            r.consignee = txtConsignee.getText();
+            if(chkCourrier.isSelected()){r.courrier = "1";} else{r.courrier = "0";};
+
+            
             r.guardar();
             JOptionPane.showMessageDialog(null, "Procesado con éxito");
             resetearCombos();
@@ -726,6 +807,11 @@ public class frmReservas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void cmbEstadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbEstadoItemStateChanged
+        // TODO add your handling code here:
+        cargarTabla();
+    }//GEN-LAST:event_cmbEstadoItemStateChanged
+
     private usuarios miUsuario;
      
     //METODOS
@@ -737,6 +823,7 @@ public class frmReservas extends javax.swing.JFrame {
         this.setMinimumSize(new Dimension(1350, 600));
         this.setVisible(true);
         resetearCombos();
+         txtBooking.setEnabled(false);
     }
 
 
@@ -751,11 +838,15 @@ public class frmReservas extends javax.swing.JFrame {
         unC.cargarCombo("SELECT DISTINCT (trasbordo1) AS imo FROM sif_reservas WHERE fechaentrada > '2021-03-10'  ORDER BY imo", cmbTrasbordo1);
         unC.cargarCombo("SELECT DISTINCT (trasbordo2) AS imo FROM sif_reservas WHERE fechaentrada > '2021-03-10'  ORDER BY imo", cmbTrasbordo2);
         
-        unC.cargarCombo("SELECT DISTINCT (empresa) AS imo FROM sif_entidades where tipo = 'CLIENTE' ORDER BY empresa", cmbCliente);
-        unC.cargarCombo("SELECT DISTINCT (empresa) AS imo FROM sif_entidades where tipo = 'AGENTE' ORDER BY empresa", cmbAgente);
-        unC.cargarCombo("SELECT DISTINCT (empresa) AS imo FROM sif_entidades where tipo = 'PROVEEDOR' ORDER BY empresa", cmbProveedor);
+        unC.cargarCombo("SELECT DISTINCT (empresa) AS imo FROM sif_entidades where tipo = 'CLIENTE' or mixto = '1' ORDER BY empresa", cmbCliente);
+        unC.cargarCombo("SELECT DISTINCT (empresa) AS imo FROM sif_entidades where tipo = 'AGENTE'  or mixto = '1' ORDER BY empresa", cmbAgente);
+        unC.cargarCombo("SELECT DISTINCT (empresa) AS imo FROM sif_entidades where tipo = 'PROVEEDOR'  or mixto = '1' ORDER BY empresa", cmbProveedor);
         unC.cargarCombo("SELECT DISTINCT (house_tipo) AS val FROM sif_reservas where fechaentrada > '2021-01-01 00:00:00' order by val", cmbHOUSETIPO);
         unC.cargarCombo("SELECT DISTINCT (master_tipo) AS val FROM sif_reservas where fechaentrada > '2021-01-01 00:00:00'  order by val", cmbMASTERTIPO);
+        
+        unC.cargarCombo("SELECT DISTINCT (transporte_entidad) AS val FROM sif_reservas WHERE  fechaentrada > '2021-01-01 00:00:00' and tipo_embarque = '" + cmbEmbarque.getSelectedItem().toString() + "' order by val", cmbTransporte_Entidad1);
+        unC.cargarCombo("SELECT DISTINCT (transporte_nombre) AS val FROM sif_reservas WHERE  fechaentrada > '2021-01-01 00:00:00' and tipo_embarque = '" + cmbEmbarque.getSelectedItem().toString() + "' order by val", cmbMedio);
+            
         
         lblID.setText("0");
         txtNumeroSif.setText("");
@@ -766,12 +857,19 @@ public class frmReservas extends javax.swing.JFrame {
         txtDrive.setText("");
         txtHOUSEBL.setText("");
         txtMASTERBL.setText("");     
+        txtBooking.setText("");
+        chkCourrier.setSelected(false);
+        txtIncoterm.setText("");
+        dtpCRD.setDate(null);
+        txtConsignee.setText("");
         
         cargarTabla();
         
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Labells;
+    private javax.swing.JCheckBox chkCourrier;
     private javax.swing.JComboBox cmbAgente;
     private javax.swing.JComboBox cmbCliente;
     private javax.swing.JComboBox cmbDestino;
@@ -793,11 +891,14 @@ public class frmReservas extends javax.swing.JFrame {
     private javax.swing.JButton cmdGuardar;
     private javax.swing.JButton cmdIR;
     private javax.swing.JButton cmdNotificaciones;
+    private com.toedter.calendar.JDateChooser dtpCRD;
     private com.toedter.calendar.JDateChooser dtpETA;
     private com.toedter.calendar.JDateChooser dtpETD;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
@@ -825,10 +926,14 @@ public class frmReservas extends javax.swing.JFrame {
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblMedio;
     private javax.swing.JLabel lblVia;
+    private javax.swing.JLabel lblbook;
     private javax.swing.JTable tblLista;
+    private javax.swing.JTextField txtBooking;
+    private javax.swing.JTextField txtConsignee;
     private javax.swing.JTextField txtContrato;
     private javax.swing.JTextField txtDrive;
     private javax.swing.JTextField txtHOUSEBL;
+    private javax.swing.JTextField txtIncoterm;
     private javax.swing.JTextField txtMASTERBL;
     private javax.swing.JTextField txtNumeroSif;
     private javax.swing.JTextField txtViaje;

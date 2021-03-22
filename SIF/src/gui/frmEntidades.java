@@ -43,6 +43,7 @@ public class frmEntidades extends javax.swing.JFrame {
         txtEmpresa = new javax.swing.JTextField();
         labeler8 = new javax.swing.JLabel();
         cmbEstado = new javax.swing.JComboBox();
+        chkMixto = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -78,7 +79,7 @@ public class frmEntidades extends javax.swing.JFrame {
         labeler3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labeler3.setText("TIPO:");
         getContentPane().add(labeler3);
-        labeler3.setBounds(90, 20, 80, 20);
+        labeler3.setBounds(90, 20, 60, 20);
 
         cmbTipo.setBackground(new java.awt.Color(255, 255, 204));
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AGENTE", "CLIENTE", "PROVEEDOR" }));
@@ -88,7 +89,7 @@ public class frmEntidades extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbTipo);
-        cmbTipo.setBounds(170, 20, 120, 20);
+        cmbTipo.setBounds(150, 20, 120, 20);
 
         labeler4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labeler4.setText("TELEFONO");
@@ -140,7 +141,7 @@ public class frmEntidades extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmdActualizar);
-        cmdActualizar.setBounds(650, 20, 110, 23);
+        cmdActualizar.setBounds(660, 20, 100, 23);
 
         cmdGuardar.setBackground(new java.awt.Color(102, 255, 102));
         cmdGuardar.setText("GUARDAR");
@@ -150,7 +151,7 @@ public class frmEntidades extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmdGuardar);
-        cmdGuardar.setBounds(450, 20, 90, 23);
+        cmdGuardar.setBounds(460, 20, 90, 23);
 
         cmdBorrar.setBackground(new java.awt.Color(255, 102, 102));
         cmdBorrar.setText("BORRAR");
@@ -160,7 +161,7 @@ public class frmEntidades extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmdBorrar);
-        cmdBorrar.setBounds(550, 20, 90, 23);
+        cmdBorrar.setBounds(560, 20, 90, 23);
 
         tblLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -199,7 +200,7 @@ public class frmEntidades extends javax.swing.JFrame {
         labeler8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labeler8.setText("EMPRESA");
         getContentPane().add(labeler8);
-        labeler8.setBounds(20, 60, 240, 20);
+        labeler8.setBounds(110, 50, 240, 20);
 
         cmbEstado.setBackground(new java.awt.Color(255, 255, 204));
         cmbEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ACTIVOS", "BAJADOS" }));
@@ -209,7 +210,11 @@ public class frmEntidades extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbEstado);
-        cmbEstado.setBounds(340, 20, 90, 20);
+        cmbEstado.setBounds(360, 20, 90, 20);
+
+        chkMixto.setText("Mixto");
+        getContentPane().add(chkMixto);
+        chkMixto.setBounds(290, 20, 60, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -220,7 +225,7 @@ public class frmEntidades extends javax.swing.JFrame {
     //EVENTO
     private void tblListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListaMouseClicked
         // TODO add your handling code here:
-        String id = "", empresa = "", razon = "", direccion = "", telefono = "", celular = "", mail = "", rut = "";
+        String id = "", empresa = "", razon = "", direccion = "", telefono = "", celular = "", mail = "", rut = "", mixto = "";
         
         try{id = tblLista.getValueAt(tblLista.getSelectedRow(), 0).toString();}catch(Exception ex){}
         try{empresa = tblLista.getValueAt(tblLista.getSelectedRow(), 1).toString();}catch(Exception ex){}
@@ -230,6 +235,7 @@ public class frmEntidades extends javax.swing.JFrame {
         try{celular = tblLista.getValueAt(tblLista.getSelectedRow(), 5).toString();}catch(Exception ex){}
         try{mail = tblLista.getValueAt(tblLista.getSelectedRow(), 6).toString();}catch(Exception ex){}
         try{rut = tblLista.getValueAt(tblLista.getSelectedRow(), 7).toString();}catch(Exception ex){}
+        try{mixto = tblLista.getValueAt(tblLista.getSelectedRow(), 8).toString();}catch(Exception ex){}
         
         lblID.setText(id);
         txtRazonSocial.setText(razon);
@@ -239,6 +245,8 @@ public class frmEntidades extends javax.swing.JFrame {
         txtMail.setText(mail);
         txtRut.setText(rut);
         txtEmpresa.setText(empresa);
+        
+        if(mixto.equals("0")){chkMixto.setSelected(false);}else{chkMixto.setSelected(true);}
         //refrescar(cmbEstado.getSelectedItem().toString());
         
     }//GEN-LAST:event_tblListaMouseClicked
@@ -252,6 +260,7 @@ public class frmEntidades extends javax.swing.JFrame {
         txtCelular.setText("");
         txtMail.setText("");
         txtRut.setText(""); 
+        chkMixto.setSelected(false);
         //txtEmpresa.setText("");
         //txtEmpresa.setText("");
     }
@@ -261,7 +270,7 @@ public class frmEntidades extends javax.swing.JFrame {
         //refrescar("CLIENTE");
         String estado = cmbEstado.getSelectedItem().toString().substring(0,1);
         vaciarTextos();
-        unC.cargarTabla("SELECT ID, EMPRESA, RAZON_SOCIAL, DIRECCION, TELEFONO, CELULAR, MAIL, RUT FROM sif_entidades WHERE TIPO = '" + cmbTipo.getSelectedItem() + "' and estado  = '" + estado + "' order by empresa", tblLista);        
+        unC.cargarTabla("SELECT ID, EMPRESA, RAZON_SOCIAL, DIRECCION, TELEFONO, CELULAR, MAIL, RUT, MIXTO FROM sif_entidades WHERE TIPO = '" + cmbTipo.getSelectedItem() + "' and estado  = '" + estado + "' order by empresa", tblLista);        
 
     }//GEN-LAST:event_cmdActualizarActionPerformed
 
@@ -277,7 +286,7 @@ public class frmEntidades extends javax.swing.JFrame {
 
     private void cmdGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdGuardarActionPerformed
         // TODO add your handling code here:
-        String id = "", razon = "", direccion = "", telefono = "", celular = "", mail = "", rut = "", url = "", empresa = "";
+        String mixto = "0", id = "", razon = "", direccion = "", telefono = "", celular = "", mail = "", rut = "", url = "", empresa = "";
         
         id = lblID.getText();
         razon =  txtRazonSocial.getText();
@@ -288,13 +297,15 @@ public class frmEntidades extends javax.swing.JFrame {
         rut = txtRut.getText();
         empresa = txtEmpresa.getText();
         
+        if(chkMixto.isSelected()) { mixto = "1"; }
+        
         if (id.equals("0"))
         {
-            url = "insert into sif_entidades (empresa, razon_social, direccion, telefono, celular, mail, rut, tipo) values ('" + empresa + "','" + razon + "','" + direccion + "','" + telefono + "','" + celular + "','" + mail + "','" + rut + "','" + cmbTipo.getSelectedItem().toString() + "')";
+            url = "insert into sif_entidades (mixto, empresa, razon_social, direccion, telefono, celular, mail, rut, tipo) values ('" + mixto + "','" + empresa + "','" + razon + "','" + direccion + "','" + telefono + "','" + celular + "','" + mail + "','" + rut + "','" + cmbTipo.getSelectedItem().toString() + "')";
         }
         else
         {
-            url = "update sif_entidades set razon_social = '" + razon + "', direccion = '" + direccion + "', telefono = '" + telefono + "',  celular = '" + celular + "',  mail = '" + mail + "',  rut = '" + rut + "', estado = 'A'  where id = " + id + "";            
+            url = "update sif_entidades set mixto = '" + mixto + "', razon_social = '" + razon + "', direccion = '" + direccion + "', telefono = '" + telefono + "',  celular = '" + celular + "',  mail = '" + mail + "',  rut = '" + rut + "', estado = 'A'  where id = " + id + "";            
         }
  
         BD unb = new BD();    
@@ -361,15 +372,16 @@ public class frmEntidades extends javax.swing.JFrame {
         
         if(txtEmpresa.getText().equals(""))
         {
-            unC.cargarTabla("SELECT ID, EMPRESA, RAZON_SOCIAL, DIRECCION, TELEFONO, CELULAR, MAIL, RUT FROM sif_entidades WHERE TIPO = '" + Tipo_Entidad + "' and estado  = '" + estado + "' order by empresa", tblLista);        
+            unC.cargarTabla("SELECT ID, EMPRESA, RAZON_SOCIAL, DIRECCION, TELEFONO, CELULAR, MAIL, RUT, MIXTO FROM sif_entidades WHERE TIPO = '" + Tipo_Entidad + "' and estado  = '" + estado + "' order by empresa", tblLista);        
         }
         else
         {
-            unC.cargarTabla("SELECT ID, EMPRESA, RAZON_SOCIAL, DIRECCION, TELEFONO, CELULAR, MAIL, RUT FROM sif_entidades WHERE empresa like '%" + txtEmpresa.getText() + "%' and TIPO = '" + Tipo_Entidad + "' and estado = '" + estado + "' order by empresa", tblLista);        
+            unC.cargarTabla("SELECT ID, EMPRESA, RAZON_SOCIAL, DIRECCION, TELEFONO, CELULAR, MAIL, RUT, MIXTO FROM sif_entidades WHERE empresa like '%" + txtEmpresa.getText() + "%' and TIPO = '" + Tipo_Entidad + "' and estado = '" + estado + "' order by empresa", tblLista);        
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox chkMixto;
     private javax.swing.JComboBox cmbEstado;
     private javax.swing.JComboBox cmbTipo;
     private javax.swing.JButton cmdActualizar;

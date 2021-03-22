@@ -51,10 +51,11 @@ public class frmCarga extends javax.swing.JFrame {
     {
         unC.cargarCombo("SELECT DISTINCT (ncm) AS imo FROM sif_tipomercaderias ORDER BY ncm", cmbMercaderia);
         unC.cargarCombo("SELECT DISTINCT (aduana_bul) AS imo FROM sif_tipobultos ORDER BY aduana_bul", cmbTipoBulto);
-        unC.cargarTabla("Select ID, TIPO_BULTOS,ID_MERCADERIA AS MERCADERIA,CANTIDAD_BULTOS AS CANTIDAD,PESO_BULTOS AS PESO from sif_cargas where id_reserva = '" + miReserva.id_reserva + "' and marca = '" + miContenedor.id + "'", tblLista);
+        unC.cargarTabla("Select ID, TIPO_BULTOS,ID_MERCADERIA AS MERCADERIA,CANTIDAD_BULTOS AS CANTIDAD,PESO_BULTOS AS PESO, VOLUMEN from sif_cargas where id_reserva = '" + miReserva.id_reserva + "' and marca = '" + miContenedor.id + "'", tblLista);
         lblMarca.setText(miContenedor.marca);
         txtCantidad.setText("");
         txtPeso.setText("");
+        txtVolumen.setText("");
         lblID.setText("0");
     }
     
@@ -96,6 +97,9 @@ public class frmCarga extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         cmbUNN = new javax.swing.JComboBox();
         lblEstado = new javax.swing.JLabel();
+        txtVolumen = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -103,31 +107,31 @@ public class frmCarga extends javax.swing.JFrame {
         lblID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblID.setText("0");
         getContentPane().add(lblID);
-        lblID.setBounds(20, 40, 110, 20);
+        lblID.setBounds(20, 40, 80, 20);
 
         labeler.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labeler.setText("CONTENEDOR");
         getContentPane().add(labeler);
-        labeler.setBounds(130, 10, 110, 20);
+        labeler.setBounds(110, 10, 110, 20);
 
         labeler1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labeler1.setText("ID");
         getContentPane().add(labeler1);
-        labeler1.setBounds(20, 10, 110, 20);
+        labeler1.setBounds(20, 10, 80, 20);
 
         txtPeso.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtPeso);
-        txtPeso.setBounds(360, 40, 60, 20);
+        txtPeso.setBounds(320, 40, 60, 20);
 
         labeler2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labeler2.setText("TIPO MERCADERIA");
         getContentPane().add(labeler2);
-        labeler2.setBounds(470, 20, 150, 14);
+        labeler2.setBounds(530, 20, 110, 14);
 
         labeler3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labeler3.setText("TIPO BULTO");
         getContentPane().add(labeler3);
-        labeler3.setBounds(640, 10, 130, 20);
+        labeler3.setBounds(650, 20, 120, 14);
 
         cmbTipoBulto.setEditable(true);
         cmbTipoBulto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CONSOLIDADO", "FULL" }));
@@ -137,7 +141,7 @@ public class frmCarga extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbTipoBulto);
-        cmbTipoBulto.setBounds(640, 40, 130, 20);
+        cmbTipoBulto.setBounds(650, 40, 120, 20);
         getContentPane().add(jSeparator3);
         jSeparator3.setBounds(10, 130, 760, 20);
 
@@ -195,29 +199,29 @@ public class frmCarga extends javax.swing.JFrame {
         cmbMercaderia.setEditable(true);
         cmbMercaderia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "DRY 20", "DRY 40", "HIGH CUBE 40", "REEFER 20", "REEFER 40", "ESPECIAL 20", "ESPECIAL 40" }));
         getContentPane().add(cmbMercaderia);
-        cmbMercaderia.setBounds(470, 40, 150, 20);
+        cmbMercaderia.setBounds(530, 40, 110, 20);
         getContentPane().add(jSeparator4);
         jSeparator4.setBounds(10, 70, 760, 10);
         getContentPane().add(lblMarca);
-        lblMarca.setBounds(130, 40, 110, 20);
+        lblMarca.setBounds(110, 40, 110, 20);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PESO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(360, 10, 60, 20);
+        jLabel1.setBounds(320, 10, 70, 20);
 
-        jLabel2.setText(" KG");
+        jLabel2.setText("M3");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(430, 40, 20, 20);
+        jLabel2.setBounds(490, 40, 20, 20);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("CANTIDAD");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(270, 10, 70, 20);
+        jLabel3.setBounds(230, 10, 70, 20);
 
         txtCantidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtCantidad);
-        txtCantidad.setBounds(270, 40, 70, 20);
+        txtCantidad.setBounds(230, 40, 70, 20);
 
         lblID1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblID1.setText("0");
@@ -317,6 +321,19 @@ public class frmCarga extends javax.swing.JFrame {
         getContentPane().add(lblEstado);
         lblEstado.setBounds(10, 630, 760, 30);
 
+        txtVolumen.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(txtVolumen);
+        txtVolumen.setBounds(420, 40, 60, 20);
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("VOLUMEN");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(420, 10, 70, 20);
+
+        jLabel5.setText(" KG");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(390, 40, 20, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -339,6 +356,7 @@ public class frmCarga extends javax.swing.JFrame {
         cmbMercaderia.setSelectedItem(tblLista.getValueAt(tblLista.getSelectedRow(), 2).toString());
         txtCantidad.setText(tblLista.getValueAt(tblLista.getSelectedRow(), 3).toString());
         txtPeso.setText(tblLista.getValueAt(tblLista.getSelectedRow(), 4).toString());
+        txtVolumen.setText(tblLista.getValueAt(tblLista.getSelectedRow(), 5).toString());
         resetearIMO();
         
     }//GEN-LAST:event_tblListaMouseClicked
@@ -378,6 +396,7 @@ public class frmCarga extends javax.swing.JFrame {
         unC.peso_bultos = txtPeso.getText();
         unC.id_mercaderia = cmbMercaderia.getSelectedItem().toString();
         unC.tipo_bultos = cmbTipoBulto.getSelectedItem().toString();
+        unC.volumen = txtVolumen.getText();
         unC.guardar();
         resetearCarga();
 
@@ -441,6 +460,8 @@ public class frmCarga extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator3;
@@ -462,5 +483,6 @@ public class frmCarga extends javax.swing.JFrame {
     private javax.swing.JTable tblLista;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtPeso;
+    private javax.swing.JTextField txtVolumen;
     // End of variables declaration//GEN-END:variables
 }

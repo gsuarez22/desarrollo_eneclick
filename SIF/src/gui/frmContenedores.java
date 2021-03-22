@@ -21,7 +21,7 @@ public class frmContenedores extends javax.swing.JFrame {
     {   
         //setLocationRelativeTo(null);
         this.setTitle("Contenedores    -    SIF CARGAS");
-        this.setMinimumSize(new Dimension(800, 600));
+        this.setMinimumSize(new Dimension(900, 600));
         this.setVisible(true);       
         miReserva = r;
         lblEstado.setText("Reserva: " + r.numero_sif + "      ID: " + r.id_reserva + "      Cliente: " + r.entidad_cliente );
@@ -31,11 +31,14 @@ public class frmContenedores extends javax.swing.JFrame {
     public void resetear()
     {
         ComponentesLista unc = new ComponentesLista();
-        unc.cargarTabla("Select ID, MARCA, TIPO, TIPO_CARGA, PRECINTOS from sif_contenedores where id_reserva = '" + miReserva.id_reserva + "'", tblLista);
+        unc.cargarTabla("Select ID, MARCA, TIPO, TIPO_CARGA, PRECINTOS, terminal, vacios, dias from sif_contenedores where id_reserva = '" + miReserva.id_reserva + "'", tblLista);
         lblID.setText("0");
         txtMarca.setText("");
         txtPrecintos.setText("");
         cmbTipo.setSelectedItem(" ");
+        txtDias.setText("0");
+        cmdTerminal.setSelectedItem(" ");
+        cmdVacios.setSelectedItem(" ");
         cmbTipo.setVisible(false);
         titi.setVisible(false);
         toto.setVisible(false);
@@ -50,7 +53,6 @@ public class frmContenedores extends javax.swing.JFrame {
 
         jButton2 = new javax.swing.JButton();
         lblID = new javax.swing.JLabel();
-        labeler = new javax.swing.JLabel();
         labeler1 = new javax.swing.JLabel();
         txtPrecintos = new javax.swing.JTextField();
         toto = new javax.swing.JLabel();
@@ -68,6 +70,13 @@ public class frmContenedores extends javax.swing.JFrame {
         lblEstado = new javax.swing.JLabel();
         txtMarca = new javax.swing.JTextField();
         titi = new javax.swing.JLabel();
+        labeler2 = new javax.swing.JLabel();
+        labeler4 = new javax.swing.JLabel();
+        cmdVacios = new javax.swing.JComboBox<>();
+        cmdTerminal = new javax.swing.JComboBox<>();
+        labeler5 = new javax.swing.JLabel();
+        labeler6 = new javax.swing.JLabel();
+        txtDias = new javax.swing.JTextField();
 
         jButton2.setBackground(new java.awt.Color(255, 153, 255));
         jButton2.setText("NOTIFICACIONES");
@@ -78,31 +87,26 @@ public class frmContenedores extends javax.swing.JFrame {
         lblID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblID.setText("0");
         getContentPane().add(lblID);
-        lblID.setBounds(20, 40, 90, 20);
-
-        labeler.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labeler.setText("CONTENEDOR");
-        getContentPane().add(labeler);
-        labeler.setBounds(120, 20, 100, 14);
+        lblID.setBounds(10, 40, 60, 20);
 
         labeler1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labeler1.setText("ID");
         getContentPane().add(labeler1);
-        labeler1.setBounds(20, 10, 90, 20);
+        labeler1.setBounds(10, 20, 60, 14);
 
         txtPrecintos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtPrecintos);
-        txtPrecintos.setBounds(240, 40, 170, 20);
+        txtPrecintos.setBounds(300, 40, 120, 20);
 
         toto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         toto.setText("PRECINTOS");
         getContentPane().add(toto);
-        toto.setBounds(240, 20, 170, 14);
+        toto.setBounds(300, 20, 120, 14);
 
         labeler3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labeler3.setText("TIPO CARGA");
         getContentPane().add(labeler3);
-        labeler3.setBounds(570, 20, 190, 14);
+        labeler3.setBounds(650, 20, 110, 14);
 
         cmbTipo_Carga.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CONSOLIDADO", "FULL" }));
         cmbTipo_Carga.addItemListener(new java.awt.event.ItemListener() {
@@ -111,9 +115,9 @@ public class frmContenedores extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbTipo_Carga);
-        cmbTipo_Carga.setBounds(570, 40, 190, 20);
+        cmbTipo_Carga.setBounds(650, 40, 110, 20);
         getContentPane().add(jSeparator3);
-        jSeparator3.setBounds(10, 130, 760, 20);
+        jSeparator3.setBounds(10, 110, 830, 20);
 
         cmdActualizar.setBackground(new java.awt.Color(0, 153, 204));
         cmdActualizar.setText("ACTUALIZAR");
@@ -123,7 +127,7 @@ public class frmContenedores extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmdActualizar);
-        cmdActualizar.setBounds(270, 90, 110, 23);
+        cmdActualizar.setBounds(270, 80, 110, 23);
 
         cmdGuardar.setBackground(new java.awt.Color(102, 255, 102));
         cmdGuardar.setText("GUARDAR");
@@ -133,7 +137,7 @@ public class frmContenedores extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmdGuardar);
-        cmdGuardar.setBounds(10, 90, 110, 23);
+        cmdGuardar.setBounds(10, 80, 110, 23);
 
         cmdBorrar.setBackground(new java.awt.Color(255, 102, 102));
         cmdBorrar.setText("BORRAR");
@@ -143,7 +147,7 @@ public class frmContenedores extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmdBorrar);
-        cmdBorrar.setBounds(140, 90, 110, 23);
+        cmdBorrar.setBounds(140, 80, 110, 23);
 
         tblLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -164,7 +168,7 @@ public class frmContenedores extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblLista);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 140, 760, 370);
+        jScrollPane1.setBounds(10, 120, 830, 390);
 
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "DRY 20", "DRY 40", "HIGH CUBE 40", "REEFER 20", "REEFER 40", "ESPECIAL 20", "ESPECIAL 40" }));
         cmbTipo.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +177,7 @@ public class frmContenedores extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbTipo);
-        cmbTipo.setBounds(430, 40, 130, 20);
+        cmbTipo.setBounds(180, 40, 110, 20);
 
         cmdCarga.setBackground(new java.awt.Color(204, 204, 0));
         cmdCarga.setText("CARGA");
@@ -183,9 +187,9 @@ public class frmContenedores extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmdCarga);
-        cmdCarga.setBounds(663, 90, 100, 23);
+        cmdCarga.setBounds(740, 80, 100, 23);
         getContentPane().add(jSeparator4);
-        jSeparator4.setBounds(10, 70, 760, 20);
+        jSeparator4.setBounds(10, 70, 830, 20);
 
         lblEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEstado.setText("sss");
@@ -194,12 +198,42 @@ public class frmContenedores extends javax.swing.JFrame {
 
         txtMarca.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtMarca);
-        txtMarca.setBounds(120, 40, 100, 20);
+        txtMarca.setBounds(80, 40, 90, 20);
 
         titi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titi.setText("TIPO CONTENEDOR");
         getContentPane().add(titi);
-        titi.setBounds(430, 20, 130, 14);
+        titi.setBounds(180, 20, 110, 14);
+
+        labeler2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labeler2.setText("CONTENEDOR");
+        getContentPane().add(labeler2);
+        labeler2.setBounds(80, 20, 90, 14);
+
+        labeler4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labeler4.setText("TERMINAL");
+        getContentPane().add(labeler4);
+        labeler4.setBounds(430, 20, 100, 14);
+
+        cmdVacios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "APM", "GODILCO", "MURCHISON", "STL", "TCP" }));
+        getContentPane().add(cmdVacios);
+        cmdVacios.setBounds(540, 40, 100, 20);
+
+        cmdTerminal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "MONTECON", "TCP" }));
+        getContentPane().add(cmdTerminal);
+        cmdTerminal.setBounds(430, 40, 100, 20);
+
+        labeler5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labeler5.setText("DIAS");
+        getContentPane().add(labeler5);
+        labeler5.setBounds(770, 20, 70, 14);
+
+        labeler6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labeler6.setText("VACIO");
+        getContentPane().add(labeler6);
+        labeler6.setBounds(540, 14, 100, 20);
+        getContentPane().add(txtDias);
+        txtDias.setBounds(770, 40, 70, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -224,6 +258,9 @@ public class frmContenedores extends javax.swing.JFrame {
         cmbTipo.setSelectedItem(tblLista.getValueAt(tblLista.getSelectedRow(), 2).toString());
         cmbTipo_Carga.setSelectedItem(tblLista.getValueAt(tblLista.getSelectedRow(), 3).toString());
         txtPrecintos.setText(tblLista.getValueAt(tblLista.getSelectedRow(), 4).toString());
+        cmdTerminal.setSelectedItem(tblLista.getValueAt(tblLista.getSelectedRow(), 5).toString());
+        cmdVacios.setSelectedItem(tblLista.getValueAt(tblLista.getSelectedRow(), 6).toString());
+        txtDias.setText(tblLista.getValueAt(tblLista.getSelectedRow(), 7).toString());
     }//GEN-LAST:event_tblListaMouseClicked
 
     private void cmdCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCargaActionPerformed
@@ -271,6 +308,9 @@ public class frmContenedores extends javax.swing.JFrame {
         unC.precintos = txtPrecintos.getText();
         unC.tipo = cmbTipo.getSelectedItem().toString();
         unC.tipo_carga = cmbTipo_Carga.getSelectedItem().toString();
+        unC.dias = txtDias.getText();
+        unC.terminal = cmdTerminal.getSelectedItem().toString();
+        unC.vacios = cmdVacios.getSelectedItem().toString();
         unC.guardar();
         resetear();
     }//GEN-LAST:event_cmdGuardarActionPerformed
@@ -298,18 +338,24 @@ public class frmContenedores extends javax.swing.JFrame {
     private javax.swing.JButton cmdBorrar;
     private javax.swing.JButton cmdCarga;
     private javax.swing.JButton cmdGuardar;
+    private javax.swing.JComboBox<String> cmdTerminal;
+    private javax.swing.JComboBox<String> cmdVacios;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JLabel labeler;
     private javax.swing.JLabel labeler1;
+    private javax.swing.JLabel labeler2;
     private javax.swing.JLabel labeler3;
+    private javax.swing.JLabel labeler4;
+    private javax.swing.JLabel labeler5;
+    private javax.swing.JLabel labeler6;
     private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblID;
     private javax.swing.JTable tblLista;
     private javax.swing.JLabel titi;
     private javax.swing.JLabel toto;
+    private javax.swing.JTextField txtDias;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtPrecintos;
     // End of variables declaration//GEN-END:variables

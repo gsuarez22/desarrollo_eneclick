@@ -12,8 +12,9 @@ public class Reserva
     public String numsif = "0",id_reserva = "0", entidad_cliente = "", origen = "", destino = "", trasbordo1 = "", trasbordo2 = "", url_drive = "";
     public String detalle = "", transporte_entidad = "", transporte_nombre = "", transporte_viaje = "", etd = "", eta = "", house_bl = "";
     public String house_tipo = "", master_bl= "", master_tipo = "", contrato = "", tipo_embarque = "", tipo_reserva = "";
-    public String proveedor_entidad = "", agente_entidad = "", numero_sif = "", estado = "";
-
+    public String booking = "", proveedor_entidad = "", agente_entidad = "", numero_sif = "", estado = "";
+    public String crd = "", incoterm = "", consignee = "", courrier = "";
+            
     public String darNumeroSif()
     {
         SimpleDateFormat unS = new SimpleDateFormat("yyyy");
@@ -49,12 +50,12 @@ public class Reserva
         {
             numero_sif = darNumeroSif();
             
-            url = "insert into sif_reservas (numsif,id_reserva,entidad_cliente,origen,destino,trasbordo1,trasbordo2,url_drive,transporte_entidad,transporte_nombre,transporte_viaje,etd,eta,house_bl,house_tipo,master_bl,master_tipo,contrato,tipo_embarque,tipo_reserva,proveedor_entidad,agente_entidad,numero_sif,estado) VALUES ";
-            url = url + " ('" + numsif + "','" + id_reserva + "','" + entidad_cliente + "','" + origen + "','" + destino + "','" + trasbordo1 + "','" + trasbordo2 + "','" + url_drive + "','" + transporte_entidad + "','" + transporte_nombre + "','" + transporte_viaje + "','" + etd + "','" + eta + "','" + house_bl + "','" + house_tipo + "','" + master_bl + "','" + master_tipo + "','" + contrato + "','" + tipo_embarque + "','" + tipo_reserva + "','" + proveedor_entidad + "','" + agente_entidad + "','" + numero_sif + "','" + estado + "')";
+            url = "insert into sif_reservas (crd, incoterm, consignee, courrier, booking, numsif,id_reserva,entidad_cliente,origen,destino,trasbordo1,trasbordo2,url_drive,transporte_entidad,transporte_nombre,transporte_viaje,etd,eta,house_bl,house_tipo,master_bl,master_tipo,contrato,tipo_embarque,tipo_reserva,proveedor_entidad,agente_entidad,numero_sif,estado) VALUES ";
+            url = url + " ('" + crd + "','" + incoterm + "','" + consignee + "','" + courrier + "','" + booking + "','" + numsif + "','" + id_reserva + "','" + entidad_cliente + "','" + origen + "','" + destino + "','" + trasbordo1 + "','" + trasbordo2 + "','" + url_drive + "','" + transporte_entidad + "','" + transporte_nombre + "','" + transporte_viaje + "','" + etd + "','" + eta + "','" + house_bl + "','" + house_tipo + "','" + master_bl + "','" + master_tipo + "','" + contrato + "','" + tipo_embarque + "','" + tipo_reserva + "','" + proveedor_entidad + "','" + agente_entidad + "','" + numero_sif + "','" + estado + "')";
         }
         else
         {
-            url = "update sif_reservas set entidad_cliente = '" + entidad_cliente + "',origen = '" + origen + "',destino = '" + destino + "',trasbordo1 = '" + trasbordo1 + "',trasbordo2 = '" + trasbordo2 + "',url_drive = '" + url_drive + "',transporte_entidad = '" + transporte_entidad + "',transporte_nombre = '" + transporte_nombre + "',transporte_viaje = '" + transporte_viaje + "',etd = '" + etd + "',eta = '" + eta + "',house_bl = '" + house_bl + "',house_tipo = '" + house_tipo + "',master_bl = '" + master_bl + "',master_tipo = '" + master_tipo + "',contrato = '" + contrato + "',tipo_embarque = '" + tipo_embarque + "',tipo_reserva = '" + tipo_reserva + "',proveedor_entidad = '" + proveedor_entidad + "',agente_entidad = '" + agente_entidad + "',estado = '" + estado + "' ";
+            url = "update sif_reservas set crd = '" + crd + "', incoterm = '" + incoterm + "', consignee = '" + consignee + "', courrier = '" + courrier +  "', booking = '" + booking + "', entidad_cliente = '" + entidad_cliente + "',origen = '" + origen + "',destino = '" + destino + "',trasbordo1 = '" + trasbordo1 + "',trasbordo2 = '" + trasbordo2 + "',url_drive = '" + url_drive + "',transporte_entidad = '" + transporte_entidad + "',transporte_nombre = '" + transporte_nombre + "',transporte_viaje = '" + transporte_viaje + "',etd = '" + etd + "',eta = '" + eta + "',house_bl = '" + house_bl + "',house_tipo = '" + house_tipo + "',master_bl = '" + master_bl + "',master_tipo = '" + master_tipo + "',contrato = '" + contrato + "',tipo_embarque = '" + tipo_embarque + "',tipo_reserva = '" + tipo_reserva + "',proveedor_entidad = '" + proveedor_entidad + "',agente_entidad = '" + agente_entidad + "',estado = '" + estado + "' ";
             url = url + " where id_reserva = '" + id_reserva + "'";
         }
         unb.StoreProcedure(url, "sif_agente");
@@ -94,6 +95,12 @@ public class Reserva
                 this.trasbordo1 = lista.getString("trasbordo1");
                 this.trasbordo2 = lista.getString("trasbordo2");
                 this.url_drive = lista.getString("url_drive");
+                this.booking = lista.getString("booking");
+                this.crd = lista.getString("crd");
+                this.incoterm = lista.getString("incoterm");
+                this.consignee = lista.getString("consignee");
+                this.courrier = lista.getString("courrier");
+                
             }
         }
         catch(Exception ex)
@@ -136,6 +143,11 @@ public class Reserva
                 this.trasbordo1 = lista.getString("trasbordo1");
                 this.trasbordo2 = lista.getString("trasbordo2");
                 this.url_drive = lista.getString("url_drive");
+                this.booking = lista.getString("booking");
+                this.crd = lista.getString("crd");
+                this.incoterm = lista.getString("incoterm");
+                this.consignee = lista.getString("consignee");
+                this.courrier = lista.getString("courrier");
             }
         }
         catch(Exception ex)

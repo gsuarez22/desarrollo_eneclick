@@ -7,7 +7,7 @@ public class Contenedor
 {
 
     //ATRIBUTOS
-    public String id = "0", id_reserva = "", marca = "", tipo = "", tipo_carga = "", precintos = "";
+    public String id = "0", terminal = "", vacios = "", dias = "", id_reserva = "", marca = "", tipo = "", tipo_carga = "", precintos = "";
    
     
     //METODOS
@@ -17,12 +17,12 @@ public class Contenedor
         String url = "";
         if(id.equals("0"))
         {
-            url = "insert into sif_contenedores (id_reserva, marca, tipo, tipo_carga, precintos) VALUES ";
-            url = url + " ('" + id_reserva + "','" + marca + "','" + tipo + "','" + tipo_carga + "','" + precintos + "')";
+            url = "insert into sif_contenedores (terminal, vacios, dias, id_reserva, marca, tipo, tipo_carga, precintos) VALUES ";
+            url = url + " ('" + terminal + "','" + vacios + "','" + dias + "','" + id_reserva + "','" + marca + "','" + tipo + "','" + tipo_carga + "','" + precintos + "')";
         }
         else
         {
-            url = "update sif_contenedores set marca = '" + marca + "',tipo = '" + tipo + "',tipo_carga = '" + tipo_carga + "', precintos = '" + precintos + "' ";
+            url = "update sif_contenedores set terminal = '" + terminal + "', vacios = '" + vacios + "', dias = '" + dias + "', marca = '" + marca + "',tipo = '" + tipo + "',tipo_carga = '" + tipo_carga + "', precintos = '" + precintos + "' ";
             url = url + " where id = '" + id + "'";
         }
         unb.StoreProcedure(url, "sif_agente");

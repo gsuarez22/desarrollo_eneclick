@@ -5,7 +5,7 @@ public class Carga
 
     //ATRIBUTOS
     
-    public String id = "0", id_reserva = "", marca = "", tipo_bultos = "", id_mercaderia = "", cantidad_bultos = "", peso_bultos = "", largo= "",ancho ="", alto="", coeficiente= "";
+    public String numero_stock, acta, deposito, dua, volumen = "", id = "0", id_reserva = "", marca = "", tipo_bultos = "", id_mercaderia = "", cantidad_bultos = "", peso_bultos = "", largo= "",ancho ="", alto="", coeficiente= "";
     
     //METODOS
     public void guardarConsolidado() 
@@ -14,12 +14,12 @@ public class Carga
         String url = "";
         if(id.equals("0"))
         {
-            url = "insert into sif_cargas_consolidadas (largo,ancho,alto,coeficiente,id_reserva, marca, tipo_bultos, id_mercaderia, cantidad_bultos, peso_bultos) VALUES ";
-            url = url + " ('" + largo + "','" + ancho + "','" + alto + "','" + coeficiente + "','" + id_reserva + "','" + marca + "','" + tipo_bultos + "','" + id_mercaderia + "','" + cantidad_bultos + "', '" + peso_bultos + "')";
+            url = "insert into sif_cargas_consolidadas (numero_stock, acta, deposito, dua, largo,ancho,alto,coeficiente,id_reserva, marca, tipo_bultos, id_mercaderia, cantidad_bultos, peso_bultos) VALUES ";
+            url = url + " ('" + numero_stock + "','" + acta + "','" + deposito + "','" + dua + "','" + largo + "','" + ancho + "','" + alto + "','" + coeficiente + "','" + id_reserva + "','" + marca + "','" + tipo_bultos + "','" + id_mercaderia + "','" + cantidad_bultos + "', '" + peso_bultos + "')";
         }
         else
         {
-            url = "update sif_cargas_consolidadas set alto = '" + alto + "', ancho = '" + ancho + "', largo = '" + largo + "', tipo_bultos = '" + tipo_bultos + "',id_mercaderia = '" + id_mercaderia + "',cantidad_bultos = '" + cantidad_bultos + "', peso_bultos = '" + peso_bultos + "' ";
+            url = "update sif_cargas_consolidadas set numero_stock = '" + numero_stock + "', acta = '" + acta + "', deposito = '" + deposito + "', dua = '" + dua + "', alto = '" + alto + "', ancho = '" + ancho + "', largo = '" + largo + "', tipo_bultos = '" + tipo_bultos + "',id_mercaderia = '" + id_mercaderia + "',cantidad_bultos = '" + cantidad_bultos + "', peso_bultos = '" + peso_bultos + "' ";
             url = url + " where id = '" + id + "'";
         }
         unb.StoreProcedure(url, "sif_agente");
@@ -44,12 +44,12 @@ public class Carga
         String url = "";
         if(id.equals("0"))
         {
-            url = "insert into sif_cargas (id_reserva, marca, tipo_bultos, id_mercaderia, cantidad_bultos, peso_bultos) VALUES ";
-            url = url + " ('" + id_reserva + "','" + marca + "','" + tipo_bultos + "','" + id_mercaderia + "','" + cantidad_bultos + "', '" + peso_bultos + "')";
+            url = "insert into sif_cargas (volumen, id_reserva, marca, tipo_bultos, id_mercaderia, cantidad_bultos, peso_bultos) VALUES ";
+            url = url + " ('" + volumen + "','" + id_reserva + "','" + marca + "','" + tipo_bultos + "','" + id_mercaderia + "','" + cantidad_bultos + "', '" + peso_bultos + "')";
         }
         else
         {
-            url = "update sif_cargas set tipo_bultos = '" + tipo_bultos + "',id_mercaderia = '" + id_mercaderia + "',cantidad_bultos = '" + cantidad_bultos + "', peso_bultos = '" + peso_bultos + "' ";
+            url = "update sif_cargas set volumen = '" + volumen + "', tipo_bultos = '" + tipo_bultos + "',id_mercaderia = '" + id_mercaderia + "',cantidad_bultos = '" + cantidad_bultos + "', peso_bultos = '" + peso_bultos + "' ";
             url = url + " where id = '" + id + "'";
         }
         unb.StoreProcedure(url, "sif_agente");
