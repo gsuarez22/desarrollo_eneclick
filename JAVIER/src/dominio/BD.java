@@ -34,7 +34,7 @@ public class BD {
                     Class.forName("com.mysql.jdbc.Driver");
 
 //                    String url = "jdbc:mysql://170.249.205.50/cantegri_eneclick";
-                    String url = "jdbc:mysql://localhost/eme_flota";
+                    String url = "jdbc:mysql://localhost/javier";
                     Connection con = DriverManager.getConnection(url, "root","");
                     
                     Statement s = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
@@ -66,7 +66,7 @@ public class BD {
                     Class.forName("com.mysql.jdbc.Driver");
 
 //                    String url = "jdbc:mysql://170.249.205.50/cantegri_eneclick";
-                    String url = "jdbc:mysql://localhost/eme_flota";
+                    String url = "jdbc:mysql://localhost/javier";
                     Connection con = DriverManager.getConnection(url, "root","");
 
                     
@@ -86,7 +86,7 @@ public class BD {
                         Class.forName("com.mysql.jdbc.Driver");
 
 //                      String url = "jdbc:mysql://170.249.205.50/cantegri_eneclick";
-                        String url = "jdbc:mysql://localhost/eme_flota";
+                        String url = "jdbc:mysql://localhost/javier";
                         Connection con = DriverManager.getConnection(url, "root","");
 
                     
@@ -115,7 +115,7 @@ public class BD {
                     Class.forName("com.mysql.jdbc.Driver");
 
  //                    String url = "jdbc:mysql://170.249.205.50/cantegri_eneclick";
-                    String url = "jdbc:mysql://localhost/eme_flota";
+                    String url = "jdbc:mysql://localhost/javier";
                     Connection con = DriverManager.getConnection(url, "root","");
 
                     
@@ -150,7 +150,7 @@ public class BD {
                     Class.forName("com.mysql.jdbc.Driver");
  
  //                    String url = "jdbc:mysql://170.249.205.50/cantegri_eneclick";
-                    String url = "jdbc:mysql://localhost/eme_flota";
+                    String url = "jdbc:mysql://localhost/javier";
                     Connection con = DriverManager.getConnection(url, "root","");
 
                     
@@ -182,7 +182,7 @@ public class BD {
                     Class.forName("com.mysql.jdbc.Driver");
  
  //                    String url = "jdbc:mysql://170.249.205.50/cantegri_eneclick";
-                    String url = "jdbc:mysql://localhost/eme_flota";
+                    String url = "jdbc:mysql://localhost/javier";
                     Connection con = DriverManager.getConnection(url, "root","");
 
                     
