@@ -5,7 +5,9 @@
  */
 package Inicio;
 
+import gui.frmABMProductos;
 import gui.frmMenu;
+import gui.frmPrecios;
 
 /**
  *
@@ -18,8 +20,13 @@ public class Galena {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        frmABMProductos unA = new frmABMProductos();
+        unA.abrir();
+        frmPrecios unP = new frmPrecios();
+        unP.abrir();
         frmMenu unM = new frmMenu();
         unM.abrir();
+        
     }
     
 }

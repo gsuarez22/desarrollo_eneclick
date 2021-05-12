@@ -26,6 +26,37 @@ public class venta
         }
     }
     
+    public void congelarVenta()
+    {
+        BD unB = new BD();
+        String url = "update ventas set congelado = '1' where idventas = '" + idventas + "'";
+        unB.StoreProcedure(url, "javier");
+        url = "update ventas_lineas set congelado = '1' where idventas = '" + idventas + "'";
+        unB.StoreProcedure(url, "javier");
+    }
+    
+    public boolean estoyCongelado()
+    {
+        boolean flag = false;
+        try
+        {
+            BD unB = new BD();
+            CachedRowSet lista = unB.Function("Select * from javier.ventas where idventas = '" + idventas + "' and congelado = '1'");
+            RowSetMetaData rsmd = (RowSetMetaData)lista.getMetaData();
+            
+            if (lista.next())
+            {
+                flag = true;
+            }
+            
+        }
+        catch (Exception ex)
+        {
+             
+        }
+        return flag;
+    }
+            
     public void traerElUltimo()
     {
     

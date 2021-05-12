@@ -8,6 +8,8 @@ package gui;
 import dominio.ComponentesLista;
 import dominio.producto;
 import java.awt.Dimension;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -47,6 +49,8 @@ public class frmABMProductos extends javax.swing.JFrame {
         txtPrecio = new javax.swing.JTextField();
         cmbProductos = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel7 = new javax.swing.JLabel();
+        cmbFamilia = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -70,9 +74,9 @@ public class frmABMProductos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblProducto);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 100, 560, 390);
+        jScrollPane1.setBounds(10, 110, 560, 380);
 
-        jLabel1.setText("ID");
+        jLabel1.setText("ID:");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(10, 10, 30, 20);
 
@@ -80,26 +84,26 @@ public class frmABMProductos extends javax.swing.JFrame {
         getContentPane().add(lblID);
         lblID.setBounds(40, 10, 40, 20);
 
-        jLabel3.setText("BARRA");
+        jLabel3.setText("BARRA:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(90, 10, 50, 20);
+        jLabel3.setBounds(80, 10, 50, 20);
 
-        jLabel4.setText("CODIGO");
+        jLabel4.setText("CODIGO:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(240, 10, 60, 20);
+        jLabel4.setBounds(220, 10, 60, 20);
 
         jLabel5.setText("PRODUCTO");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(10, 50, 70, 20);
+        jLabel5.setBounds(10, 50, 190, 20);
 
-        jLabel6.setText("PRECIO");
+        jLabel6.setText("PRECIO:");
         jLabel6.setToolTipText("");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(300, 50, 50, 20);
+        jLabel6.setBounds(350, 10, 50, 20);
 
         chkPeso.setText("PESO");
         getContentPane().add(chkPeso);
-        chkPeso.setBounds(390, 10, 60, 20);
+        chkPeso.setBounds(480, 70, 90, 30);
 
         cmdGuardar.setBackground(new java.awt.Color(255, 51, 51));
         cmdGuardar.setText("GUARDAR");
@@ -119,20 +123,31 @@ public class frmABMProductos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmdReset);
-        cmdReset.setBounds(480, 50, 90, 23);
+        cmdReset.setBounds(480, 40, 90, 23);
         getContentPane().add(txtCodigo);
-        txtCodigo.setBounds(300, 10, 60, 20);
+        txtCodigo.setBounds(280, 10, 60, 20);
         getContentPane().add(txtBarra);
-        txtBarra.setBounds(140, 10, 80, 20);
+        txtBarra.setBounds(130, 10, 80, 20);
+
+        txtPrecio.setText("0");
         getContentPane().add(txtPrecio);
-        txtPrecio.setBounds(350, 50, 100, 20);
+        txtPrecio.setBounds(400, 10, 60, 20);
 
         cmbProductos.setEditable(true);
         cmbProductos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cmbProductos);
-        cmbProductos.setBounds(80, 50, 190, 20);
+        cmbProductos.setBounds(10, 70, 240, 20);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 90, 560, 10);
+        jSeparator1.setBounds(10, 100, 560, 10);
+
+        jLabel7.setText("FAMILIA POST");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(270, 50, 190, 20);
+
+        cmbFamilia.setEditable(true);
+        cmbFamilia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cmbFamilia);
+        cmbFamilia.setBounds(270, 70, 190, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -153,6 +168,8 @@ public class frmABMProductos extends javax.swing.JFrame {
         txtCodigo.setText(p.codigo);
         txtPrecio.setText(p.precio);
         cmbProductos.setSelectedItem(p.nombre);
+        cmbFamilia.setSelectedItem(p.familia);
+        
         if (p.peso.equals("1")){  chkPeso.setSelected(true);  }else{  chkPeso.setSelected(false);  }                
     }//GEN-LAST:event_tblProductoMouseClicked
 
@@ -163,8 +180,10 @@ public class frmABMProductos extends javax.swing.JFrame {
         p.barra = txtBarra.getText();
         p.codigo = txtCodigo.getText();
         p.precio = txtPrecio.getText();
+        if(p.precio.equals("")){p.precio = "0";}
         p.nombre = cmbProductos.getSelectedItem().toString();
         if (chkPeso.isSelected()){  p.peso = "1";  }else{  p.peso = "0";  }
+        p.familia = cmbFamilia.getSelectedItem().toString();
         p.guardar();
         reset();
         //QUITAR CUANDO ESTE OPERATIVO 
@@ -184,21 +203,34 @@ public class frmABMProductos extends javax.swing.JFrame {
         unC.cargarTabla("select id, codigo, barra, nombre, peso, precio from productos order by nombre", tblProducto);
     }
 
+    private String origen = "";
+    private String destino = "";
+    
+    public void completarArchivo(String rutaAbsoluta, String nombreArchivo)
+    {
+        SimpleDateFormat unS = new SimpleDateFormat("yyyyMMddHHmmss");
+        origen = rutaAbsoluta; 
+        destino = "C:\\Javier\\" +  unS.format(new Date()) + nombreArchivo;
+    }
+    
     public void abrir()
     {
         this.setVisible(true);
-        this.setTitle("ABM PRODUCTOS - ALMACEN");
+        this.setTitle("MANTENIMIENTO PRODUCTOS - ALMACEN");
         this.setMinimumSize(new Dimension(600, 550)); 
+        this.setLocation(730, 130);
         reset();
         //Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/eme.png"));
         //this.setIconImage(icon);       
          //QUITAR CUANDO ESTE OPERATIVO 
-        unC.cargarCombo("select distinct (nombre) from productos order by nombre", cmbProductos);
+        unC.cargarCombo("select distinct (nombre) as nombre from productos order by nombre", cmbProductos);
+        unC.cargarCombo("select distinct (familia) as familia from productos order by familia", cmbFamilia);
 
     }    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox chkPeso;
+    private javax.swing.JComboBox cmbFamilia;
     private javax.swing.JComboBox cmbProductos;
     private javax.swing.JButton cmdGuardar;
     private javax.swing.JButton cmdReset;
@@ -207,6 +239,7 @@ public class frmABMProductos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblID;

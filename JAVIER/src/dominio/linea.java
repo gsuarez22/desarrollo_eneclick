@@ -4,7 +4,7 @@ package dominio;
 public class linea 
 {
 
-    public String id = "",idventas = "",idproducto = "",nombreproducto = "",cantidad = "",cantidadunitaria = "",preciounitario = "",preciofinal = "";
+    public String pp = "", id = "",idventas = "",idproducto = "",nombreproducto = "",cantidad = "",cantidadunitaria = "",preciounitario = "",preciofinal = "";
     
     public void guardar()
     {

@@ -7,7 +7,7 @@ import javax.sql.rowset.CachedRowSet;
 public class producto 
 {
 
-    public String id = "",nombre = "",codigo = "",precio = "",cantidadunitaria = "", barra= "", peso="";
+    public String id = "",nombre = "",codigo = "",precio = "0",cantidadunitaria = "", barra= "", peso="", familia = "";
     
     public void cargarPorId(String id)
     {
@@ -28,6 +28,7 @@ public class producto
                 this.cantidadunitaria = lista.getString("cantidadunitaria");
                 this.peso = lista.getString("peso");
                 this.barra = lista.getString("barra");
+                this.familia = lista.getString("familia");
             }
             
         }
@@ -56,13 +57,13 @@ public class producto
         if(id.equals("0"))
         {
             BD unB = new BD();
-            String url = "insert into productos (nombre, codigo, precio, barra, peso) VALUES ('" + nombre + "','" + codigo + "','" + precio + "','" + barra + "','" + peso + "')";
+            String url = "insert into productos (familia, nombre, codigo, precio, barra, peso) VALUES ('" + familia + "','" + nombre + "','" + codigo + "','" + precio + "','" + barra + "','" + peso + "')";
             unB.StoreProcedure(url, "galena");            
         }
         else
         {
             BD unB = new BD();
-            String url = "update productos set nombre = '" + nombre + "', codigo = '" + codigo + "', precio = '" + precio + "', barra = '" + barra + "', peso = '" + peso + "' where id = '" + id + "'";
+            String url = "update productos set familia = '" + familia + "', nombre = '" + nombre + "', codigo = '" + codigo + "', precio = '" + precio + "', barra = '" + barra + "', peso = '" + peso + "' where id = '" + id + "'";
             unB.StoreProcedure(url, "galena");
         }
     }

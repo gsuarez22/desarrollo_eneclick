@@ -55,12 +55,13 @@ class Etiquetas implements Printable
                     g.drawString(unL.cantidad, 230 , y);
                     g.drawString(unL.cantidadunitaria, 310 , y);
                     int cant = 0;
-                    try{cant = Integer.parseInt(unL.cantidad) * Integer.parseInt(unL.cantidadunitaria);} catch(Exception ex){}
-                    g.drawString(String.valueOf(cant), 370 , y);
+                    //try{cant = Integer.parseInt(unL.cantidad) * Integer.parseInt(unL.cantidadunitaria);} catch(Exception ex){}
+                    //try{cant = Double.parseDouble(unL.preciofinal) / Double.parseDouble(unL.cantidadunitaria);} catch(Exception ex){}
+
+                    g.drawString(unL.pp, 370 , y);
                     double can = 0;
-                    try{can = Double.parseDouble(unL.preciounitario) / Double.parseDouble(unL.cantidadunitaria);} catch(Exception ex){}
                     
-                    g.drawString(unL.preciounitario + " (" + String.valueOf(can) + ")", 435 , y);
+                    g.drawString(unL.preciounitario /*+ " (" + String.valueOf(Math.round(can)) + ")"*/, 435 , y);
                     g.drawString(unL.preciofinal, 510 , y);
                 }
                 y = y + 15;

@@ -122,6 +122,7 @@ public class frmMenu extends javax.swing.JFrame {
         lblPrecioU = new javax.swing.JTextField();
         lblPeso = new javax.swing.JLabel();
         cmdABMP = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -306,7 +307,7 @@ public class frmMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmdReset);
-        cmdReset.setBounds(930, 20, 90, 30);
+        cmdReset.setBounds(930, 10, 90, 40);
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("PRODUCTO:");
@@ -369,6 +370,15 @@ public class frmMenu extends javax.swing.JFrame {
         getContentPane().add(cmdABMP);
         cmdABMP.setBounds(310, 30, 20, 20);
 
+        jButton3.setText("PRECIOS");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(213, 3, 120, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -377,11 +387,14 @@ public class frmMenu extends javax.swing.JFrame {
         ComponentesLista unC = new ComponentesLista();
         unC.cargarTabla("Select ID, NOMBRE, PRECIO, cantidadunitaria as UNIDADES from Productos where (nombre like '%" + txtProducto.getText() + "%' OR barra like '%" + txtProducto.getText() + "%' OR codigo like '%" + txtProducto.getText() + "%')", tblProducto);
         
-        if(txtProducto.getText().length() >= 12 && Double.parseDouble(txtProducto.getText()) > 100000)
+        //if(Double.parseDouble(txtProducto.getText()) > Double.parseDouble("100000000000"))
+        //{
+        if(evt.getKeyCode() == 10)
         {
             String id = tblProducto.getModel().getValueAt(0 , 0).toString();
             aislar(id);
-            txtCantidad.requestFocus();
+            txtCantidad.setText("1");
+            txtCantidad.requestFocus();//jButton2ActionPerformed(null);
         }
         
     }//GEN-LAST:event_txtProductoKeyReleased
@@ -443,6 +456,12 @@ public class frmMenu extends javax.swing.JFrame {
             
             if(evt.getKeyCode() == 10)
             {
+                //if(Double.parseDouble(txtProducto.getText()) > Double.parseDouble("100000000000"))
+                //{
+                    //double ddd = Double.parseDouble(lblPrecioU.getText());
+                    //lblPrecioT.setText(String.valueOf(ddd));
+                    //txtCantidad.setText("1");
+                //}
                 jButton2ActionPerformed(null);
             }
             
@@ -489,6 +508,7 @@ public class frmMenu extends javax.swing.JFrame {
             lblId.setText(v.idventas);
 
             resetear();
+            txtProducto.setText("");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -524,7 +544,7 @@ public class frmMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         mostrarResumen();
-        imprimir();
+//        imprimir();
         
         ComponentesLista unC = new ComponentesLista();
         unC.cargarCombo("Select distinct (cliente) as cli from ventas", cmbCLiente);
@@ -601,6 +621,12 @@ public class frmMenu extends javax.swing.JFrame {
         unF.abrir();
     }//GEN-LAST:event_cmdABMPActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        frmPrecios unF = new frmPrecios();
+        unF.abrir();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     public void imprimir ()
     {
         linea unL = new linea();
@@ -653,6 +679,7 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JButton cmdReset;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
