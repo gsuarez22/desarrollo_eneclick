@@ -18,7 +18,7 @@ public class frmABMUsuarios extends javax.swing.JFrame {
     {
         miControlador = unC;
         this.setVisible(true);
-        this.setTitle("FLOTA EME UNO - Mantenimiento Usuarios");
+        this.setTitle("VELMAREN - Mantenimiento Usuarios");
         this.setMinimumSize(new Dimension(800, 600)); 
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/eme.png"));
         this.setIconImage(icon);        

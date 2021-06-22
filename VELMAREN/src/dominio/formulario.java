@@ -7,6 +7,7 @@ package dominio;
 
 import gui.frmABMCarga;
 import gui.frmABMUsuarios;
+import gui.frmMantenimientoBultos;
 import gui.frmSubirArchivoMSC;
 import javax.swing.*;
 import java.awt.*;
@@ -91,6 +92,7 @@ public class formulario implements ActionListener
                 if(m.formulario.equals("frmABMCarga")){frmABMCarga frm = new frmABMCarga(); frm.abrir(miControlador);}
                 if(m.formulario.equals("frmABMUsuarios")){frmABMUsuarios frm = new frmABMUsuarios(); frm.abrir(miControlador);}
                 if(m.formulario.equals("frmSubirArchivoMSC")){frmSubirArchivoMSC frm = new frmSubirArchivoMSC(); frm.abrir(miControlador);}
+                if(m.formulario.equals("frmMantenimientoBultos")){frmMantenimientoBultos frm = new frmMantenimientoBultos(); frm.abrir(miControlador);}
                 
                 i = menus.size();
             }

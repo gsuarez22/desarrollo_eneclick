@@ -174,7 +174,7 @@ public class BD {
             }   
     }
     
-    public void Todos(ArrayList c, String bd)
+    public void Todos(ArrayList c)
     {
  
             try
@@ -189,28 +189,22 @@ public class BD {
                     int i = 0;
                     while (c.size() > i)
                     {
-                        if(i == 1558 )
-                        {
-                            i = i;
-                        }
-                    
+                                         
                         Statement s = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                                                    ResultSet.CONCUR_READ_ONLY);
                         String sql = c.get(i).toString();
                         
                         if (sql.equals("") == false)
                         {
-                            try{s.execute(sql);}catch(Exception ex){//JOptionPane.showMessageDialog(null, ex.toString() + " " + sql
-                            }
-                            
-                            if(sql.length() > 29)
+                            try
                             {
-/*                                if(usuario.equals("AUTOMATICO") == false && usuario.equals("GENERICO") == false)
-                                {
-                                    sql = sql.replace("'","#");
-                                    s.execute("insert into a_log (sqls, sistema, usuarios, bd) VALUES ('" + sql + "','" + sistema + "','" + usuario + "','" + bd + "')");
-                                }*/
+                                s.execute(sql);
                             }
+                            catch(Exception ex)
+                            {
+                                //JOptionPane.showMessageDialog(null, ex.toString() + " " + sql);
+                            }                            
+                            
                         } 
                         
                         s.close();
