@@ -90,14 +90,14 @@ public class GeneradorCargas
         //  1         2        3               4                                          5           6       7      8    9   10   11  12  13 14 15 16 17 18 19 20 21       22 
         // 2999,"13023435311","1","WORLDWIDE LOGISTICS CO,,LTD,XIAMEN BRANCH","REPREMAR LOGISTICS","CNXMN","UYMVD","usd","2","CC","2","CC","","","","","","","","","","REPREMAR LOGISTICS"
        
-            File unF = new File("c:\\velmaren-cargas\\");
+            File unF = new File("c:\\Cargas\\IMP\\");
             unF.mkdirs();
 
             FileWriter fichero = null;
             PrintWriter pw = null;
             try
             {
-                fichero = new FileWriter("c:/velmaren-cargas/bl.txt");
+                fichero = new FileWriter("c:/Cargas/IMP/bl.txt");
                 pw = new PrintWriter(fichero);
 
                 BD unb = new BD();
@@ -276,27 +276,31 @@ public class GeneradorCargas
         //  1         2        3               4                                          5           6       7      8    9   10   11  12  13 14 15 16 17 18 19 20 21       22 
         // 2999,"13023435311","1","WORLDWIDE LOGISTICS CO,,LTD,XIAMEN BRANCH","REPREMAR LOGISTICS","CNXMN","UYMVD","usd","2","CC","2","CC","","","","","","","","","","REPREMAR LOGISTICS"
   //SELECT 2999,numero_bl,'1',cargador_bl,consignatario_bl,origencodigo_bl, destinocodigo_bl,'usd',2,formadepago_bl,2,formadepago_bl,'','','','','','','','','',notificador_bl FROM bridge_bls WHERE buque_bl = '" + buque + "' and viaje_bl = '" + viaje + "' AND eta_bl = '" + eta + "'"
-        File unF = new File("c:\\velmaren-cargas\\");
+        File unF = new File("c:\\Cargas\\IMP\\");
         unF.mkdirs();
         
         FileWriter fichero = null;
         PrintWriter pw = null;
         try
         {
-            fichero = new FileWriter("c:/velmaren-cargas/bl.txt");
+            fichero = new FileWriter("c:/Cargas/IMP/bl.txt");
             pw = new PrintWriter(fichero);
 
             BD unb = new BD();
             String url = "";
             
-            url = "SELECT 2999,numero_bl,'1','MSC URUGUAY S.A.','MSC URUGUAY S.A.',origencodigo_bl, destinocodigo_bl,'usd',2,'',2,'','','','','','','','','','','' FROM bridge_bls WHERE buque_bl = '" + buque + "' and viaje_bl = '" + viaje + "' AND eta_bl = '" + eta + "'"; 
+            url = "SELECT 2999,numero_bl,'1',tipo,tipo,origencodigo_bl, destinocodigo_bl,'usd',2,'',2,'','','','','','','','','','','' FROM bridge_bls WHERE buque_bl = '" + buque + "' and viaje_bl = '" + viaje + "' AND eta_bl = '" + eta + "'"; 
                         
             CachedRowSet lista = unb.Function(url);
             RowSetMetaData rsmd = (RowSetMetaData)lista.getMetaData();
             
             while (lista.next())
             {
-                pw.println(lista.getString(1) + "," + c + lista.getString(2) + c + "," + c + lista.getString(3) + c + "," + c + lista.getString(4) + c + "," + c + lista.getString(5) + c + ","  + c + lista.getString(6).replace("DOCAU", "DOSDQ") + c + "," + c + lista.getString(7).replace("DOCAU", "DOSDQ") + c + "," + c + lista.getString(8) + c + "," + c + lista.getString(9) + c + "," + c + lista.getString(10) + c + "," + c + lista.getString(11) + c + "," + c + lista.getString(12) + c + "," + c + lista.getString(13) + c + "," + c + lista.getString(14) + c + "," + c + lista.getString(15) + c + "," + c + lista.getString(16) + c + "," + c + lista.getString(17) + c + "," + c + lista.getString(18) + c + "," + c + lista.getString(19) + c + "," + c + lista.getString(20) + c + "," + c + lista.getString(21) + c + "," + c + lista.getString(22) + c) ;
+                String tipo = "";
+                if (lista.getString(4).equals("MSC")){tipo = "MSC URUGUAY S.A.";}
+                if (lista.getString(4).equals("COSCO")){tipo = "COSCO URUGUAY S.A.";}
+                if (lista.getString(4).equals("HAPAG")){tipo = "CSAV GROUP AGENCIES URUGUAY S.A.";}
+                pw.println(lista.getString(1) + "," + c + lista.getString(2) + c + "," + c + lista.getString(3) + c + "," + c + tipo + c + "," + c + tipo + c + ","  + c + lista.getString(6).replace("DOCAU", "DOSDQ") + c + "," + c + lista.getString(7).replace("DOCAU", "DOSDQ") + c + "," + c + lista.getString(8) + c + "," + c + lista.getString(9) + c + "," + c + lista.getString(10) + c + "," + c + lista.getString(11) + c + "," + c + lista.getString(12) + c + "," + c + lista.getString(13) + c + "," + c + lista.getString(14) + c + "," + c + lista.getString(15) + c + "," + c + lista.getString(16) + c + "," + c + lista.getString(17) + c + "," + c + lista.getString(18) + c + "," + c + lista.getString(19) + c + "," + c + lista.getString(20) + c + "," + c + lista.getString(21) + c + "," + c + lista.getString(22) + c) ;
             }
 
         }catch (Exception e) {e.printStackTrace();} 
@@ -308,14 +312,14 @@ public class GeneradorCargas
         //   1        2         3     4   5     6    7        8
         // 2999,"MORU5812935","42R0","5","95","kgm",8088,"MOL564108M"
         
-        File unF = new File("c:\\velmaren-cargas\\");
+        File unF = new File("c:\\Cargas\\IMP\\");
         unF.mkdirs();
         
         FileWriter fichero = null;
         PrintWriter pw = null;
         try
         {
-            fichero = new FileWriter("c:/velmaren-cargas/eqpt.txt");
+            fichero = new FileWriter("c:/Cargas/IMP/eqpt.txt");
             pw = new PrintWriter(fichero);
 
             BD unb = new BD();
@@ -341,14 +345,14 @@ public class GeneradorCargas
         //2999,"13023435311","1",385,CTN,"kgm",3588.2,"CASUAL SHOES ","","","n/s","n/s","n/s","n/s","1647","6404","49.95"
 // SELECT 2999,bl.numero_bl,'1',cantidaddebultos_bl, aduana_bul,'kgm',pesototal_bl,decripcioncarga_bl,'','','n/s','n/s','n/s','n/s',1644,ncm_bl,m3_bl  
         
-        File unF = new File("c:\\velmaren-cargas\\");
+        File unF = new File("c:\\Cargas\\IMP\\");
         unF.mkdirs();
         
         FileWriter fichero = null;
         PrintWriter pw = null;
         try
         {
-            fichero = new FileWriter("c:/velmaren-cargas/blline.txt");
+            fichero = new FileWriter("c:/Cargas/IMP/blline.txt");
             pw = new PrintWriter(fichero);
 
             BD unb = new BD();
@@ -381,14 +385,14 @@ public class GeneradorCargas
         //  1       2        3      4         5
         //2999,"13023435311",1,"MORU5812935",385
         
-        File unF = new File("c:\\velmaren-cargas\\");
+        File unF = new File("c:\\Cargas\\IMP\\");
         unF.mkdirs();
         
         FileWriter fichero = null;
         PrintWriter pw = null;
         try
         {
-            fichero = new FileWriter("c:/velmaren-cargas/bllineqp.txt");
+            fichero = new FileWriter("c:/Cargas/IMP/bllineqp.txt");
             pw = new PrintWriter(fichero);
 
             BD unb = new BD();
@@ -414,14 +418,14 @@ public class GeneradorCargas
         // 1    2      3           4     5     6       7
         //2999,13,"MAERSK SHAMS","2999","s","jpyok","uymvd"
         
-        File unF = new File("c:\\velmaren-cargas\\");
+        File unF = new File("c:\\Cargas\\IMP\\");
         unF.mkdirs();
         
         FileWriter fichero = null;
         PrintWriter pw = null;
         try
         {
-            fichero = new FileWriter("c:/velmaren-cargas/manifest.txt");
+            fichero = new FileWriter("c:/Cargas/IMP/manifest.txt");
             pw = new PrintWriter(fichero);
 
             BD unb = new BD();

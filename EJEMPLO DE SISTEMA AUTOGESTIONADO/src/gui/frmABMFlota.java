@@ -20,7 +20,7 @@ import java.util.Date;
  *
  * @author sistemas
  */
-public class frmABMCarga extends javax.swing.JFrame {
+public class frmABMFlota extends javax.swing.JFrame {
 
     public controlador miControlador;
 
@@ -54,7 +54,7 @@ public class frmABMCarga extends javax.swing.JFrame {
     }
     
     
-    public frmABMCarga() {
+    public frmABMFlota() {
         initComponents();
     }
 

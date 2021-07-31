@@ -73,6 +73,8 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
         lblsuma = new javax.swing.JLabel();
         cmdCargas = new javax.swing.JButton();
         chkTcp = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
+        cmbTipo = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -84,7 +86,7 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmdProcesar);
-        cmdProcesar.setBounds(670, 10, 100, 23);
+        cmdProcesar.setBounds(670, 10, 100, 20);
 
         cmdsearch.setText("...");
         cmdsearch.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +122,7 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblLista);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 200, 760, 140);
+        jScrollPane1.setBounds(20, 200, 1150, 140);
 
         tblCOntT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -136,7 +138,7 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tblCOntT);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(10, 490, 510, 90);
+        jScrollPane2.setBounds(10, 490, 900, 90);
 
         tblCant.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -157,7 +159,7 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
         jScrollPane3.setViewportView(tblCant);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(530, 370, 240, 210);
+        jScrollPane3.setBounds(930, 370, 240, 210);
 
         tblBuques.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -178,7 +180,7 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
         jScrollPane4.setViewportView(tblBuques);
 
         getContentPane().add(jScrollPane4);
-        jScrollPane4.setBounds(10, 70, 760, 100);
+        jScrollPane4.setBounds(10, 70, 1160, 100);
 
         jLabel3.setText("CONTENEDORES");
         getContentPane().add(jLabel3);
@@ -194,7 +196,7 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
 
         jLabel6.setText("RESUMEN MANIFIESTO");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(530, 350, 180, 20);
+        jLabel6.setBounds(930, 350, 180, 20);
 
         tblCOnt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -210,21 +212,21 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
         jScrollPane5.setViewportView(tblCOnt);
 
         getContentPane().add(jScrollPane5);
-        jScrollPane5.setBounds(10, 370, 510, 90);
+        jScrollPane5.setBounds(10, 370, 900, 90);
 
         lblBls.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblBls.setForeground(new java.awt.Color(0, 0, 255));
         lblBls.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblBls.setText("0");
         getContentPane().add(lblBls);
-        lblBls.setBounds(700, 340, 70, 20);
+        lblBls.setBounds(1100, 340, 70, 20);
 
         lblContenedores.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblContenedores.setForeground(new java.awt.Color(255, 0, 0));
         lblContenedores.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblContenedores.setText("0");
         getContentPane().add(lblContenedores);
-        lblContenedores.setBounds(450, 580, 70, 20);
+        lblContenedores.setBounds(840, 580, 70, 20);
 
         jLabel9.setText("CONTENEDORES POR BL");
         getContentPane().add(jLabel9);
@@ -235,21 +237,21 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
         lblContenedoresbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblContenedoresbl.setText("0");
         getContentPane().add(lblContenedoresbl);
-        lblContenedoresbl.setBounds(450, 460, 70, 20);
+        lblContenedoresbl.setBounds(840, 460, 70, 20);
 
         lblRe.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblRe.setForeground(new java.awt.Color(0, 0, 255));
         lblRe.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblRe.setText("0");
         getContentPane().add(lblRe);
-        lblRe.setBounds(560, 580, 70, 20);
+        lblRe.setBounds(960, 580, 70, 20);
 
         lblsuma.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblsuma.setForeground(new java.awt.Color(255, 0, 0));
         lblsuma.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblsuma.setText("0");
         getContentPane().add(lblsuma);
-        lblsuma.setBounds(680, 580, 70, 20);
+        lblsuma.setBounds(1080, 580, 70, 20);
 
         cmdCargas.setText("EXPORTAR");
         cmdCargas.addActionListener(new java.awt.event.ActionListener() {
@@ -258,12 +260,26 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmdCargas);
-        cmdCargas.setBounds(670, 40, 100, 23);
+        cmdCargas.setBounds(1000, 10, 100, 23);
 
         chkTcp.setSelected(true);
         chkTcp.setText("TCP");
         getContentPane().add(chkTcp);
-        chkTcp.setBounds(605, 40, 60, 23);
+        chkTcp.setBounds(1110, 10, 60, 23);
+
+        jButton1.setBackground(new java.awt.Color(255, 0, 0));
+        jButton1.setText("Quitar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(1090, 170, 80, 20);
+
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MSC", "COSCO", "HAPAG" }));
+        getContentPane().add(cmbTipo);
+        cmbTipo.setBounds(780, 10, 110, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -276,8 +292,18 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
     
     private void cmdProcesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdProcesarActionPerformed
         // TODO add your handling code here:
-        
-        try{procesarExcel();}catch(Exception ex){}
+        if (cmbTipo.getSelectedItem().toString().equals("MSC"))
+        {
+            try{procesarExcel();}catch(Exception ex){}
+        }
+        if (cmbTipo.getSelectedItem().toString().equals("COSCO"))
+        {
+            try{procesarExcelCosco();}catch(Exception ex){}
+        }
+        if (cmbTipo.getSelectedItem().toString().equals("HAPAG"))
+        {
+            try{procesarExcelHapag();}catch(Exception ex){}
+        }
     }//GEN-LAST:event_cmdProcesarActionPerformed
 
     private void tblListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListaMouseClicked
@@ -301,12 +327,12 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
         String viaje = tblBuques.getValueAt(tblBuques.getSelectedRow(), 1).toString();
         String eta = tblBuques.getValueAt(tblBuques.getSelectedRow(), 2).toString();
         
-        unc.cargarTabla("SELECT numero_bl AS BL, buque_bl AS BUQUE, viaje_bl AS VIAJE, eta_bl AS ETA, cargador_bl AS SHIPPER, consignatario_bl AS CONSIGNEE, notificador_bl AS NOTIFY, origen_bl AS ORIGEN, destino_bl AS DESTINO, origencodigo_bl as COD_ORIGEN, destinocodigo_bl AS COD_DESTINO, pesototal_bl as PESO, cantidaddebultos_bl as BULTOS from bridge_bls where buque_bl = '" + buque + "' AND viaje_bl = '" + viaje + "' and eta_bl = '" + eta + "' order by numero_bl", tblLista);
+        unc.cargarTabla("SELECT numero_bl AS BL, buque_bl AS BUQUE, viaje_bl AS VIAJE, eta_bl AS ETA, cargador_bl AS SHIPPER, consignatario_bl AS CONSIGNEE, notificador_bl AS NOTIFY, origen_bl AS ORIGEN, destino_bl AS DESTINO, origencodigo_bl as COD_ORIGEN, destinocodigo_bl AS COD_DESTINO, pesototal_bl as PESO, cantidaddebultos_bl as BULTOS, tipobultos_bl  AS TIPO from bridge_bls where buque_bl = '" + buque + "' AND viaje_bl = '" + viaje + "' and eta_bl = '" + eta + "' order by numero_bl", tblLista);
         unc.cargarTabla("SELECT c.numero_bl AS BL, numero_con AS CONTENEDOR, tipoequipoOPUS_con AS TIPO, precinto_con AS PRECINTO, peso_con AS PESO FROM bridge_contenedores c, bridge_bls b WHERE b.buque_bl = '" + buque + "' AND b.viaje_bl =  '" + viaje + "' AND b.eta_bl = '" + eta + "' AND b.numero_bl = c.numero_bl ORDER BY c.numero_con", tblCOntT);
         lblContenedores.setText(String.valueOf(tblCOntT.getRowCount()));
         lblBls.setText(String.valueOf(tblLista.getRowCount()));
                 
-        String url = "SELECT c.numero_bl AS BL, COUNT(c.numero_con) AS CANTIDAD FROM bridge_bls b, bridge_contenedores c WHERE b.buque_bl = '" + buque + "' AND b.viaje_bl = '" + viaje + "' AND c.numero_bl = b.numero_bl  "
+        String url = "SELECT c.numero_bl AS BL, COUNT(c.numero_con) AS CANTIDAD FROM bridge_bls b, bridge_contenedores c WHERE b.buque_bl = '" + buque + "' AND b.viaje_bl = '" + viaje + "' AND b.eta_bl = '" + eta +  "' AND c.numero_bl = b.numero_bl  "
                 + "GROUP BY b.numero_bl ORDER BY cantidad DESC, c.numero_bl";
         unc.cargarTabla(url, tblCant);
         lblRe.setText(String.valueOf(tblCant.getRowCount()));
@@ -329,7 +355,8 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
             
             while (lista.next())
             {
-                actualizar.add ("update bridge_bls set cantidaddebultos_bl = '" + lista.getString(1) + "', pesototal_bl = '" + lista.getString(2) + "' where numero_bl = '" + lista.getString(3) + "'  AND buque_bl = '" + buque + "' AND viaje_bl = '" + viaje + "' AND eta_bl = '" + eta + "'");
+                //actualizar.add ("update bridge_bls set cantidaddebultos_bl = '" + lista.getString(1) + "', pesototal_bl = '" + lista.getString(2) + "' where numero_bl = '" + lista.getString(3) + "'  AND buque_bl = '" + buque + "' AND viaje_bl = '" + viaje + "' AND eta_bl = '" + eta + "'");
+                actualizar.add ("update bridge_bls set pesototal_bl = '" + lista.getString(2) + "' where numero_bl = '" + lista.getString(3) + "'  AND buque_bl = '" + buque + "' AND viaje_bl = '" + viaje + "' AND eta_bl = '" + eta + "'");
             }
         }
         catch (Exception ex)
@@ -394,6 +421,57 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cmdCargasActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String buque = tblBuques.getValueAt(tblBuques.getSelectedRow(), 0).toString();
+        String viaje = tblBuques.getValueAt(tblBuques.getSelectedRow(), 1).toString();
+        String eta = tblBuques.getValueAt(tblBuques.getSelectedRow(), 2).toString();
+
+        BD unB = new BD();
+        String url = "DELETE c.*, bl.* FROM bridge_bls bl, bridge_contenedores c WHERE bl.buque_bl = '" + buque + "' AND bl.viaje_bl = '" + viaje + "' AND bl.eta_bl = '" + eta + "' AND bl.numero_bl = c.numero_bl";
+        unB.StoreProcedure(url, "velmaren");
+        url = "DELETE bl.* FROM bridge_bls bl WHERE bl.buque_bl = '" + buque + "' AND bl.viaje_bl = '" + viaje + "' AND bl.eta_bl = '" + eta + "'";
+        unB.StoreProcedure(url, "velmaren");
+        reset();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public String sacarNumeros(String tipobulto)
+    {
+        String val = tipobulto;
+        try
+        {
+            int numero = Integer.parseInt(val.substring(0,1));
+            while(numero > 0)
+            {
+                val = val.substring(1,val.length());
+                                
+                if (val.substring(0,1).equals(" "))
+                {
+                    numero = 1;
+                }
+                else
+                {
+                    if (val.substring(0,1).equals("0"))
+                    {
+                        numero = 1;
+                    }
+                    else
+                    {
+                        numero = Integer.parseInt(val.substring(0,1));
+                    }
+                }            
+            }
+        }
+        catch(Exception ex)
+        {
+        }
+        
+        if(val.contains("INTERMEDIATE BULK CONTAINER")){val = "BULK";}
+        if(val.equals(" ") || val.equals("")) { val = "EMPTY"; }
+        
+        return val;
+    }
+    
     public void procesarExcel() throws IOException
     {
         String ruta = lblArchivo.getText();
@@ -560,7 +638,7 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
                                         String [] valor = varcontenedor.split("/");
                                         c.marca = valor[0];
                                         c.tipo = valor[1].replace("'", "");
-
+                                        
                                         try{cell = row.getCell((short) 10);
                                         varcontenedor = cell.getStringCellValue();}catch(Exception ex){}
                                         varcontenedor = varcontenedor.replace("Gross:", "");
@@ -570,12 +648,28 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
 
                                         c.peso = varcontenedor;
 
+                                        cell = row.getCell((short) 7);
+                                        try
+                                        {
+                                            if(unbl.cantbultos.equals("")){unbl.cantbultos= "0";}
+                                            unbl.mercaderia = cell.getStringCellValue();
+                                            int cant = Integer.parseInt(unbl.mercaderia.split(" ")[0]) + Integer.parseInt(unbl.cantbultos);
+                                            unbl.cantbultos = String.valueOf(cant);
+                                            unbl.tipobulto = unbl.mercaderia.replace(unbl.cantbultos + " ", "");
+                                            
+                                            unbl.tipobulto = sacarNumeros(unbl.tipobulto);
+                                            
+                                        }catch(Exception ex){}
+                                        
                                         ultimaposicionbl++;
                                         try{row = sheet.getRow(ultimaposicionbl);
                                         cell = row.getCell((short) 4);
                                         varcontenedor = cell.getStringCellValue();}catch(Exception ex){}
                                         valor = varcontenedor.split("/");
                                         c.seal = valor[0].replace("SEAL:", "");
+                                        
+                                         
+                                        
                                         unbl.containers.add(c);
                                     }
                                     catch(Exception ex){}
@@ -641,9 +735,488 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
         }
     }
     
+    public void procesarExcelCosco() throws IOException
+    {
+        String ruta = lblArchivo.getText();
+        ArrayList barco = new ArrayList();
+        int ultimaposicionbl = 0;
+        if(ruta.equals("") == false)
+        {
+            try
+            {
+                //LEVANTOP EL EXCEL
+                InputStream ExcelFileToRead = new FileInputStream(lblArchivo.getText());
+                HSSFWorkbook wb = new HSSFWorkbook(ExcelFileToRead);
+                HSSFSheet sheet=wb.getSheetAt(0);
+                HSSFRow row;
+                HSSFCell cell;
+
+                int i = 0;
+
+                //CARGO DATOS INICIALES
+                String tipo = "", varblaux = "", buque = "", viaje = "", eta = "", origen = "", destino = "", shipper = "", consignee = "", notify = "";
+                
+                row = sheet.getRow(0);
+                cell = row.getCell((short) 4);
+                bl unB = new bl();
+                unB.numerobl = cell.getStringCellValue();
+                
+                //RECORRO EL EXCEL
+                while (unB.numerobl.equals("") == false)
+                {       
+                    row = sheet.getRow(i);
+                    //CARGO POR PRIMERA VEZ
+                    if(varblaux.equals(""))
+                    {
+                        unB.tipo = "COSCO";
+                        //ETA
+                        try{row = sheet.getRow(i);
+                            SimpleDateFormat unf = new SimpleDateFormat("yyyy-MM-dd");
+                            cell = row.getCell((short) 18);
+                            unB.eta = unf.format(cell.getDateCellValue());
+                            //eta = eta.substring(6, 10) + "-" + eta.substring(3, 5) + "-" + eta.substring(0, 2);
+                        }catch(Exception ex){eta = "1900-01-01";}  
+
+                        //BUQUE
+                        try{row = sheet.getRow(i);
+                            cell = row.getCell((short) 16);
+                            unB.buque = cell.getStringCellValue();
+                            String [] viajes = unB.buque.split(" ");
+                            unB.viaje = viajes[viajes.length - 1];
+                            unB.buque = unB.buque.replace(unB.viaje, "");
+                        }catch(Exception ex){buque="";viaje="";}  
+
+                        //ORIGEN                                        
+                        try{
+                        cell = row.getCell((short) 8);
+                        unB.origen = cell.getStringCellValue();}catch(Exception ex){}    
+                        
+                        //ORIGEN                                        
+                        try{
+                        cell = row.getCell((short) 9);
+                        unB.destino = cell.getStringCellValue();}catch(Exception ex){}
+                        
+                        //CLIENTE
+                        try{
+                            cell = row.getCell((short) 12);
+                            unB.shipper = cell.getStringCellValue();
+                            unB.consignee = unB.shipper;
+                        }catch(Exception ex){}
+                            
+                        unB.tipobulto = "CN";
+                        unB.cantbultos = "1";
+                        
+                    }
+                    
+                    //BL                                        
+                    try{
+                        cell = row.getCell((short) 4);
+                        varblaux = cell.getStringCellValue();
+                    }catch(Exception ex){}
+                    
+                                        
+                    if(unB.numerobl.equals(varblaux))
+                    {
+                        //CARGA CONTENEDORES
+                        container c = new container();
+                                                
+                        try{cell = row.getCell((short) 0);
+                            c.marca = cell.getStringCellValue();
+                            c.marca = c.marca.replace(" ", "").replace("-", "");
+                            
+                        }catch(Exception ex){}
+
+                        try{cell = row.getCell((short) 1);
+                            c.tipo = cell.getStringCellValue();
+                            if(c.tipo.equals("20DC")){c.tipo="20DV";}
+                            if(c.tipo.equals("40DC")){c.tipo="40DV";}
+                            if(c.tipo.equals("40HQ")){c.tipo="40HC";}
+                            if(c.tipo.equals("20TK")){c.tipo="20TK";}
+                            if(c.tipo.equals("40TK")){c.tipo="40TK";}
+                        }catch(Exception ex){}
+                        
+                        try{cell = row.getCell((short) 2);
+                            c.peso = String.valueOf(cell.getNumericCellValue());
+                        }catch(Exception ex){}
+                        
+                        try
+                        {
+                            cell = row.getCell((short) 3);
+                            c.seal = cell.getStringCellValue();
+                        }catch(Exception ex){}                 
+                        
+                        unB.containers.add(c);
+                        
+                    }
+                    else
+                    {
+                        try{unB = reestructurarPeso(unB);}catch(Exception ex){}
+
+                        //GUARDAR DATOS
+                        barco.add(unB);         
+                        unB = new bl();
+                        unB.numerobl = varblaux;
+
+                        if(unB.numerobl.equals("COSU6297561510"))
+                        {
+                            String entre = "";
+                        }
+                        
+                        //CARGA TODOS LOS DATOS DE BL
+                        unB.tipo = "COSCO";
+                        //ETA
+                        try{row = sheet.getRow(i);
+                           SimpleDateFormat unf = new SimpleDateFormat("yyyy-MM-dd");
+                            cell = row.getCell((short) 18);
+                            unB.eta = unf.format(cell.getDateCellValue());
+                        }catch(Exception ex){eta = "1900-01-01";}  
+
+                        //BUQUE
+                        try{row = sheet.getRow(i);
+                            cell = row.getCell((short) 16);
+                            unB.buque = cell.getStringCellValue();
+                            String [] viajes = unB.buque.split(" ");
+                            unB.viaje = viajes[viajes.length - 1];
+                            unB.buque = unB.buque.replace(unB.viaje, "");
+                        }catch(Exception ex){buque="";viaje="";}  
+
+                        //ORIGEN                                        
+                        try{
+                        cell = row.getCell((short) 8);
+                        unB.origen = cell.getStringCellValue();}catch(Exception ex){}    
+                        
+                        //ORIGEN                                        
+                        try{
+                        cell = row.getCell((short) 9);
+                        unB.destino = cell.getStringCellValue();}catch(Exception ex){}
+                        
+                        //CLIENTE
+                        try{
+                            cell = row.getCell((short) 12);
+                            unB.shipper = cell.getStringCellValue();
+                            unB.consignee = unB.shipper;
+                        }catch(Exception ex){}
+                        
+                        unB.tipobulto = "CN";
+                        unB.cantbultos = "1";
+                        
+                        
+                        //CARGA CONTENEDORES
+                        container c = new container();
+                                                
+                        try{cell = row.getCell((short) 0);
+                            c.marca = cell.getStringCellValue();
+                            c.marca = c.marca.replace(" ", "").replace("-", "");
+                            
+                        }catch(Exception ex){}
+
+                        try{cell = row.getCell((short) 1);
+                            c.tipo = cell.getStringCellValue();
+                            if(c.tipo.equals("20DC")){c.tipo="20DV";}
+                            if(c.tipo.equals("40DC")){c.tipo="40DV";}
+                            if(c.tipo.equals("40HQ")){c.tipo="40HC";}
+                            if(c.tipo.equals("20TK")){c.tipo="20TK";}
+                            if(c.tipo.equals("40TK")){c.tipo="40TK";}
+                        }catch(Exception ex){}
+                        
+                        try{cell = row.getCell((short) 2);
+                            c.peso = String.valueOf(cell.getNumericCellValue());
+                        }catch(Exception ex){}
+                        
+                        try
+                        {
+                            cell = row.getCell((short) 3);
+                            c.seal = cell.getStringCellValue();
+                        }catch(Exception ex){}                 
+                        
+                        unB.containers.add(c);
+                        
+                        
+                        
+                        
+                    }
+                    i++;
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+            guardarArrayBarco(barco);
+            
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Elija un archivo");
+        }
+    }
+    
+    public void procesarExcelHapag() throws IOException
+    {
+        String ruta = lblArchivo.getText();
+        ArrayList barco = new ArrayList();
+        int ultimaposicionbl = 0;
+        if(ruta.equals("") == false)
+        {
+            try
+            {
+                //LEVANTOP EL EXCEL
+                InputStream ExcelFileToRead = new FileInputStream(lblArchivo.getText());
+                HSSFWorkbook wb = new HSSFWorkbook(ExcelFileToRead);
+                HSSFSheet sheet=wb.getSheetAt(0);
+                HSSFRow row;
+                HSSFCell cell;
+
+                int i = 20;
+
+                //CARGO DATOS INICIALES
+                String tipo = "", varblaux = "", buque = "", viaje = "", eta = "", origen = "", destino = "", shipper = "", consignee = "", notify = "";
+                
+                row = sheet.getRow(20);
+                cell = row.getCell((short) 9);
+                bl unB = new bl();
+                unB.numerobl = cell.getStringCellValue();
+                
+                //RECORRO EL EXCEL
+                while (unB.numerobl.equals("") == false)
+                {       
+                    row = sheet.getRow(i);
+                    //CARGO POR PRIMERA VEZ
+                    if(varblaux.equals(""))
+                    {
+                        unB.tipo = "HAPAG";
+                        //ETA
+                        try{row = sheet.getRow(i);
+                            SimpleDateFormat unf = new SimpleDateFormat("yyyy-MM-dd");
+                            row = sheet.getRow(13);
+                            cell = row.getCell((short) 2);
+                            unB.eta = cell.getStringCellValue();
+                            unB.eta = unB.eta.substring(0, 10);
+                        }catch(Exception ex){unB.eta = "1900-01-01";}  
+
+                        //BUQUE
+                        try{row = sheet.getRow(i);
+                            row = sheet.getRow(5);
+                            cell = row.getCell((short) 2);
+                            unB.buque = cell.getStringCellValue();
+                            row = sheet.getRow(8);
+                            cell = row.getCell((short) 2);
+                            unB.viaje = cell.getStringCellValue();
+                            
+                        }catch(Exception ex){buque="";viaje="";}  
+                        
+                        row = sheet.getRow(i);
+                        //ORIGEN                                        
+                        try{
+                        cell = row.getCell((short) 29);
+                        unB.origen = cell.getStringCellValue();}catch(Exception ex){}    
+                        
+                        //DESTINO                                        
+                        try{
+                        cell = row.getCell((short) 32);
+                        unB.destino = cell.getStringCellValue();}catch(Exception ex){}
+                        
+                        //CLIENTE
+                        try{
+                            cell = row.getCell((short) 12);
+                            unB.shipper = "HAPAG-LLOYD";
+                            unB.consignee = "HAPAG-LLOYD";
+                        }catch(Exception ex){}
+                            
+                        unB.tipobulto = "CN";
+                        unB.cantbultos = "1";
+                        
+                    }
+                    
+                    //BL                                        
+                    try{
+                        cell = row.getCell((short) 9);
+                        varblaux = cell.getStringCellValue();
+                    }catch(Exception ex){}
+                    
+                                        
+                    if(unB.numerobl.equals(varblaux))
+                    {
+                        //CARGA CONTENEDORES
+                        container c = new container();
+                                                
+                        try{cell = row.getCell((short) 1);
+                            c.marca = cell.getStringCellValue();
+                            c.marca = c.marca.replace(" ", "").replace("-", "");
+                            
+                        }catch(Exception ex){}
+
+                        try{cell = row.getCell((short) 2);
+                            c.tipo = cell.getStringCellValue();
+                            if(c.tipo.equals("22G1")){c.tipo="20DV";}
+                            if(c.tipo.equals("42G1")){c.tipo="40DV";}
+                            if(c.tipo.equals("45G1")){c.tipo="40HC";}
+                            if(c.tipo.equals("22R1")){c.tipo="20HR";}
+                            if(c.tipo.equals("45R1")){c.tipo="40HR";}
+                        }catch(Exception ex){}
+                        
+                        try{cell = row.getCell((short) 39);
+                            c.peso = cell.getStringCellValue().replace("KGM", "");
+                        }catch(Exception ex){}
+                        
+                        try
+                        {
+                            cell = row.getCell((short) 3);
+                            c.seal = cell.getStringCellValue();
+                        }catch(Exception ex){}                 
+                        
+                        unB.containers.add(c);
+                        
+                    }
+                    else
+                    {
+                        try{unB = reestructurarPeso(unB);}catch(Exception ex){}
+
+                        //GUARDAR DATOS
+                        barco.add(unB);         
+                        unB = new bl();
+                        unB.numerobl = varblaux;
+
+                        if(unB.numerobl.equals("COSU6297561510"))
+                        {
+                            String entre = "";
+                        }
+                        
+                        //CARGA TODOS LOS DATOS DE BL
+                        unB.tipo = "HAPAG";
+
+                        //ETA
+                        try{row = sheet.getRow(i);
+                            SimpleDateFormat unf = new SimpleDateFormat("yyyy-MM-dd");
+                            row = sheet.getRow(13);
+                            cell = row.getCell((short) 2);
+                            unB.eta = cell.getStringCellValue();
+                            unB.eta = unB.eta.substring(0, 10);
+                        }catch(Exception ex){unB.eta = "1900-01-01";}  
+
+                        //BUQUE
+                        try{row = sheet.getRow(i);
+                            row = sheet.getRow(5);
+                            cell = row.getCell((short) 2);
+                            unB.buque = cell.getStringCellValue();
+                            row = sheet.getRow(8);
+                            cell = row.getCell((short) 2);
+                            unB.viaje = cell.getStringCellValue();
+                        }catch(Exception ex){}
+
+                       row = sheet.getRow(i);
+                        //ORIGEN                                        
+                        try{
+                        cell = row.getCell((short) 29);
+                        unB.origen = cell.getStringCellValue();}catch(Exception ex){}    
+                        
+                        //DESTINO                                        
+                        try{
+                        cell = row.getCell((short) 32);
+                        unB.destino = cell.getStringCellValue();}catch(Exception ex){}
+                        
+                        //CLIENTE
+                        try{
+                            cell = row.getCell((short) 12);
+                            unB.shipper = "HAPAG-LLOYD";
+                            unB.consignee = "HAPAG-LLOYD";
+                        }catch(Exception ex){}
+                        
+                        unB.tipobulto = "CN";
+                        unB.cantbultos = "1";
+                        
+                        
+                        //CARGA CONTENEDORES
+                        container c = new container();
+                                                
+                        try{cell = row.getCell((short) 1);
+                            c.marca = cell.getStringCellValue();
+                            c.marca = c.marca.replace(" ", "").replace("-", "");
+                            
+                        }catch(Exception ex){}
+
+                        try{cell = row.getCell((short) 2);
+                            c.tipo = cell.getStringCellValue();
+                            if(c.tipo.equals("22G1")){c.tipo="20DV";}
+                            if(c.tipo.equals("42G1")){c.tipo="40DV";}
+                            if(c.tipo.equals("45G1")){c.tipo="40HC";}
+                            if(c.tipo.equals("22R1")){c.tipo="20HR";}
+                            if(c.tipo.equals("45R1")){c.tipo="40HR";}
+                        }catch(Exception ex){}
+                        
+                        try{cell = row.getCell((short) 39);
+                            c.peso = cell.getStringCellValue().replace("KGM", "");
+                        }catch(Exception ex){}
+                        
+                        
+                        try
+                        {
+                            cell = row.getCell((short) 3);
+                            c.seal = cell.getStringCellValue();
+                        }catch(Exception ex){}                 
+                        
+                        unB.containers.add(c);
+                        
+                        
+                        
+                        
+                    }
+                    i++;
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+            guardarArrayBarco(barco);
+            
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Elija un archivo");
+        }
+    }
+    
+    private bl reestructurarPeso(bl unb)
+    {
+        int i = 0;
+                
+        while (unb.containers.size() > i)
+        {
+            container c = new container();
+            c = (container) unb.containers.get(i);
+            unb.pesotot = String.valueOf(Double.parseDouble(c.peso) + Double.parseDouble(unb.pesotot));
+            i++;
+        }
+        unb.cantbultos = String.valueOf(unb.containers.size());
+        return unb;
+        
+    /*    int i = 0;
+        if (unb.containers.size() > 1)
+        {
+            container c = new container();
+            c = (container) unb.containers.get(i);
+            unb.cantbultos = String.valueOf(unb.containers.size());
+            unb.pesotot = c.peso;
+        }
+        
+        while (unb.containers.size() > i)
+        {
+            container c = new container();
+            c = (container) unb.containers.get(i);
+            c.peso = String.valueOf(Double.parseDouble(c.peso) / unb.containers.size());
+            unb.containers.set(i, c);
+            i++;
+        }
+        
+        return unb;*/
+    }
+    
     private String darCodigoCiudad (String ciudad)
     {
-        String flag = "";
+        String flag = ciudad;
         
         try
         {
@@ -675,8 +1248,12 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
                     
             unb.destinocode = darCodigoCiudad (unb.destino);
                     
-            String valor = "INSERT INTO bridge_bls (numero_bl, buque_bl, viaje_bl, eta_bl, consignatario_bl, cargador_bl, notificador_bl, destino_bl, origen_bl, origencodigo_bl, destinocodigo_bl) "
-            + "VALUES ('" + unb.numerobl + "','" + unb.buque + "','" + unb.viaje + "','" + unb.eta + "','" + unb.consignee + "','" + unb.shipper + "','" + unb.notify + "','" + unb.destino + "','" + unb.origen + "','UYMVD','" + unb.destinocode + "');";
+            unb.numerobl = unb.numerobl.toUpperCase().replace("EXPRESS","");
+            unb.numerobl = unb.numerobl.toUpperCase().replace("BL","");
+            unb.numerobl = unb.numerobl.toUpperCase().replace(" ","");
+            
+            String valor = "INSERT INTO bridge_bls (tipo, decripcioncarga_bl, cantidaddebultos_bl, tipobultos_bl, numero_bl, buque_bl, viaje_bl, eta_bl, consignatario_bl, cargador_bl, notificador_bl, destino_bl, origen_bl, origencodigo_bl, destinocodigo_bl) "
+            + "VALUES ('" + unb.tipo  + "','" + unb.mercaderia + "','" + unb.cantbultos + "','" + unb.tipobulto + "','" + unb.numerobl + "','" + unb.buque + "','" + unb.viaje + "','" + unb.eta + "','" + unb.consignee + "','" + unb.shipper + "','" + unb.notify + "','" + unb.destino + "','" + unb.origen + "','UYMVD','" + unb.destinocode + "');";
        
             int cont = 0;
             while (unb.containers.size() > cont)
@@ -685,10 +1262,12 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
 
                 if (c.marca.length() > 10 && c.marca.length() < 12)
                 {
-                    String vali = "INSERT INTO bridge_contenedores (precinto_con, numero_bl,numero_con,tipoequipoOPUS_con,vaciolleno_con,peso_con,ncm,cantidadbultos_con,temp_con) "
-                    + "VALUES ('" + c.seal + "','" + unb.numerobl + "','" + c.marca + "','" + c.tipo + "','f','" + c.peso + "','','','');";
-            
-                    lista.add(vali);
+                    if(c.tipo.toUpperCase().equals("TYPE") == false)
+                    {
+                        String vali = "INSERT INTO bridge_contenedores (precinto_con, numero_bl,numero_con,tipoequipoOPUS_con,vaciolleno_con,peso_con,ncm,cantidadbultos_con,temp_con) "
+                        + "VALUES ('" + c.seal + "','" + unb.numerobl + "','" + c.marca + "','" + c.tipo + "','f','" + c.peso + "','','','');";
+                        lista.add(vali);
+                    }
                 }
                 cont++;
             }
@@ -709,14 +1288,16 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
     {
         ComponentesLista unc = new ComponentesLista();
         //unc.cargarTabla("SELECT numero_bl AS BL, buque_bl AS BUQUE, viaje_bl AS VIAJE, eta_bl AS ETA, cargador_bl AS SHIPPER, consignatario_bl AS CONSIGNEE, notificador_bl AS NOTIFY, origen_bl AS ORIGEN, destino_bl AS DESTINO, origencodigo_bl as COD_ORIGEN, destinocodigo_bl AS COD_DESTINO from bridge_bls", tblLista);
-        unc.cargarTabla("SELECT buque_bl AS BUQUE, viaje_bl AS VIAJE, eta_bl AS ETA FROM bridge_bls GROUP BY buque_bl, viaje_bl", tblBuques);
+        unc.cargarTabla("SELECT buque_bl AS BUQUE, viaje_bl AS VIAJE, eta_bl AS ETA FROM bridge_bls GROUP BY buque_bl, viaje_bl, eta_bl", tblBuques);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox chkTcp;
+    private javax.swing.JComboBox cmbTipo;
     private javax.swing.JButton cmdCargas;
     private javax.swing.JButton cmdProcesar;
     private javax.swing.JButton cmdsearch;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -748,7 +1329,7 @@ public class frmSubirArchivoMSC extends javax.swing.JFrame {
         miControlador = unC;
         this.setVisible(true);
         this.setTitle("SUBIR MSC - Mantenimiento Usuarios");
-        this.setMinimumSize(new Dimension(800, 650)); 
+        this.setMinimumSize(new Dimension(1200, 650)); 
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/eme.png"));
         this.setIconImage(icon);  
         reset();

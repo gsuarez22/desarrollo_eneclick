@@ -26,7 +26,7 @@ public class bl
 {
 
     //ATRIBUTOS
-    public String discharge1="", discharge="", SHPRCD="", servicio="",decla = "",eta="",tipobulto ="",ppt ="", cct="", origencode ="", destinocode ="", escala= "", formadepago = "", numerobl = "", pol = "", pod = "", origen = "", destino = "", shipper="", consignee="",notify="",cantbultos="",kilaje="",ncm="",mercaderia="",buque="",viaje="",m3= "", temperatura = "", tipo = "", imo = "", unn = "", pesotot = "0";
+    public String discharge1="", discharge="", SHPRCD="", servicio="",decla = "",eta="",tipobulto ="",ppt ="", cct="", origencode ="", destinocode ="", escala= "", formadepago = "", numerobl = "", pol = "", pod = "", origen = "", destino = "", shipper="", consignee="",notify="",cantbultos="",kilaje="",ncm="",mercaderia="",buque="",viaje="",m3= "", temperatura = "", tipo = "MSC", imo = "", unn = "", pesotot = "0";
     public ArrayList containers = new ArrayList();
     public ArrayList puertodescarga;
     

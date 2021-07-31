@@ -76,7 +76,7 @@ public class frmMantenimientoBultos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jtCodigoArm);
-        jtCodigoArm.setBounds(50, 50, 220, 20);
+        jtCodigoArm.setBounds(10, 50, 220, 20);
 
         txtArmador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +84,7 @@ public class frmMantenimientoBultos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtArmador);
-        txtArmador.setBounds(460, 120, 110, 20);
+        txtArmador.setBounds(450, 50, 110, 20);
 
         btnAdd.setLabel("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +93,7 @@ public class frmMantenimientoBultos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(580, 120, 60, 23);
+        btnAdd.setBounds(570, 50, 60, 23);
 
         btnModify.setLabel("Modify");
         btnModify.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +102,7 @@ public class frmMantenimientoBultos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnModify);
-        btnModify.setBounds(650, 120, 73, 23);
+        btnModify.setBounds(640, 50, 73, 23);
 
         tblLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,15 +123,15 @@ public class frmMantenimientoBultos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblLista);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(50, 160, 670, 340);
+        jScrollPane1.setBounds(10, 90, 710, 410);
 
         jLabel1.setText("Codigo Armador:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(460, 90, 130, 30);
+        jLabel1.setBounds(450, 20, 130, 30);
 
         jLabel2.setText("Buscar:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(50, 30, 110, 20);
+        jLabel2.setBounds(10, 30, 110, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -3,7 +3,6 @@ package fubb.sys;
 import java.sql.*;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
-import com.mysql.jdbc.interceptors.SessionAssociationInterceptor;
 import com.sun.rowset.CachedRowSetImpl;
 import java.util.ArrayList;
 import javax.sql.rowset.CachedRowSet;
@@ -16,30 +15,31 @@ public class DBSSH {
 
     public static CachedRowSet Function(String sql){
         
-        String passsql = "Xt2zKZXk@7X^H!U=";
-        String user = "root";
-        String password = "salu2carrito";
-        String host = "179.27.99.90";
-        int port=22;
+        String passsql = "PASSWORD";
+               
         JSch jsch = new JSch();
-            
         try
         {
-            Session session = jsch.getSession(user, host, port);
-            session.setPassword(password);
-            session.setConfig("StrictHostKeyChecking", "no");
-            System.out.println("Establishing Connection...");
+            //Nuevo en Amazon
+            jsch.addIdentity("C:/fubb/fuentes/FUBBKEYPAIR2.pem");
+            jsch.setConfig("StrictHostKeyChecking", "no");
+
+            //enter your own EC2 instance IP here
+            Session session=jsch.getSession("ubuntu", "13.58.138.148", 22);
             session.connect();
-            
-            lport = 1234;
+    
+        
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        
+            //lport = 1234;
+            lport = 3306;
             rhost = "localhost";
             rport = 3306;
             int assinged_port=session.setPortForwardingL(lport, rhost, rport);
             
-            Class.forName("com.mysql.jdbc.Driver");
-
+            
             String url = "jdbc:mysql://localhost:" + assinged_port + "/fubb";
-            Connection con = DriverManager.getConnection(url, "root",passsql);
+            Connection con = DriverManager.getConnection(url, "fubb",passsql);
                     
             Statement s = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                                                    ResultSet.CONCUR_READ_ONLY);
@@ -66,31 +66,31 @@ public class DBSSH {
     public static void Todos (ArrayList c)
     {
         
-        String passsql = "Xt2zKZXk@7X^H!U=";
-        String user = "root";
-        String password = "salu2carrito";
-        String host = "179.27.99.90";
-        int port=22;
+        String passsql = "PASSWORD";
+               
         JSch jsch = new JSch();
-            
         try
         {
-            Session session = jsch.getSession(user, host, port);
-            session.setPassword(password);
-            session.setConfig("StrictHostKeyChecking", "no");
-            System.out.println("Establishing Connection...");
+            //Nuevo en Amazon
+            jsch.addIdentity("C:/fubb/fuentes/FUBBKEYPAIR2.pem");
+            jsch.setConfig("StrictHostKeyChecking", "no");
+
+            //enter your own EC2 instance IP here
+            Session session=jsch.getSession("ubuntu", "13.58.138.148", 22);
             session.connect();
-            
-            lport = 1234;
+    
+        
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        
+            //lport = 1234;
+            lport = 3306;
             rhost = "localhost";
             rport = 3306;
             int assinged_port=session.setPortForwardingL(lport, rhost, rport);
             
-            Class.forName("com.mysql.jdbc.Driver");
-
+            
             String url = "jdbc:mysql://localhost:" + assinged_port + "/fubb";
-            Connection con = DriverManager.getConnection(url, "root",passsql);
-                    
+            Connection con = DriverManager.getConnection(url, "fubb",passsql);
             
             int i = 0;
             while (c.size() > i)
@@ -116,33 +116,36 @@ public class DBSSH {
     
     public static void StoreProcedure(String sql){
         
-        String passsql = "Xt2zKZXk@7X^H!U=";
-        String user = "root";
-        String password = "salu2carrito";
-        String host = "179.27.99.90";
-        int port=22;
+        String passsql = "PASSWORD";
+               
         JSch jsch = new JSch();
-            
         try
         {
-            Session session = jsch.getSession(user, host, port);
-            session.setPassword(password);
-            session.setConfig("StrictHostKeyChecking", "no");
-            System.out.println("Establishing Connection...");
+            //Nuevo en Amazon
+            jsch.addIdentity("C:/fubb/fuentes/FUBBKEYPAIR2.pem");
+            jsch.setConfig("StrictHostKeyChecking", "no");
+
+            //enter your own EC2 instance IP here
+            Session session=jsch.getSession("ubuntu", "13.58.138.148", 22);
             session.connect();
-            
-            lport = 1234;
+    
+        
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        
+            //lport = 1234;
+            lport = 3306;
             rhost = "localhost";
             rport = 3306;
             int assinged_port=session.setPortForwardingL(lport, rhost, rport);
             
-            Class.forName("com.mysql.jdbc.Driver");
-
+            
             String url = "jdbc:mysql://localhost:" + assinged_port + "/fubb";
-            Connection con = DriverManager.getConnection(url, "root",passsql);
+            Connection con = DriverManager.getConnection(url, "fubb",passsql);
                     
             Statement s = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                                                    ResultSet.CONCUR_READ_ONLY);
+
+            ResultSet rs= s.executeQuery(sql);
 
             
             s.execute(sql);

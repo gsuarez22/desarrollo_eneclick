@@ -3,6 +3,6 @@ package domain;
 public class clubes 
 {
  
-    String id = "0", nombre = "", mail = "", cuenta = "";
+    public String id = "0", nombre = "", mail = "", cuenta = "";
     
 }

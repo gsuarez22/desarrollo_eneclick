@@ -77,7 +77,7 @@ public class frmLogIn extends javax.swing.JFrame {
     public void abrir()
     {
         this.setVisible(true);
-        this.setTitle("FLOTA EME UNO - LOGIN");
+        this.setTitle("EXPO - LOGIN");
         this.setMinimumSize(new Dimension(400, 200)); 
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/eme.png"));
         this.setIconImage(icon);                
